@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9060" systemVersion="15A284" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9060"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="TestViewController">
+            <connections>
+                <outlet property="view" destination="1" id="g9c-gG-ZOK"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="1">
+            <rect key="frame" x="0.0" y="0.0" width="1099" height="646"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tabView id="0Og-HV-RHO">
+                    <rect key="frame" x="13" y="10" width="1073" height="622"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <animations/>
+                    <font key="font" metaFont="system"/>
+                    <tabViewItems>
+                        <tabViewItem label="Theme" identifier="1" id="Yu2-2a-4L2">
+                            <view key="view" toolTip="alors ?" id="qGa-oX-T0S">
+                                <rect key="frame" x="10" y="33" width="1053" height="576"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="iJK-2X-fDA">
+                                        <rect key="frame" x="24" y="499" width="749" height="51"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <animations/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="6kl-Yh-gnz">
+                                            <font key="font" metaFont="system"/>
+                                            <string key="title">TODO: Rounded button avec CPBox
+dropdown menu avec flat button (rajouter un effet d'animation sur le texte comme sur le site:https://www.crittercism.com
+</string>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <button verticalHuggingPriority="750" id="aJh-0L-FrH">
+                                        <rect key="frame" x="26" y="447" width="106" height="36"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <animations/>
+                                        <buttonCell key="cell" type="smallSquare" title="Gradient Button" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2zn-sh-DgI">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                    </button>
+                                    <customView id="nin-Gz-8uC" userLabel="container view">
+                                        <rect key="frame" x="153" y="138" width="612" height="344"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <animations/>
+                                    </customView>
+                                </subviews>
+                                <animations/>
+                            </view>
+                        </tabViewItem>
+                        <tabViewItem label="Tootip" identifier="" id="6bI-y5-Cio">
+                            <view key="view" id="lTt-MN-WyY">
+                                <rect key="frame" x="10" y="33" width="1053" height="576"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <customView id="cHs-kX-KOS" userLabel="container view">
+                                        <rect key="frame" x="101" y="131" width="397" height="344"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <animations/>
+                                    </customView>
+                                    <button verticalHuggingPriority="750" id="xRn-iU-xGG">
+                                        <rect key="frame" x="28" y="486" width="106" height="36"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <animations/>
+                                        <buttonCell key="cell" type="smallSquare" title="Gradient Button" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="GvK-dp-9zV">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                    </button>
+                                </subviews>
+                                <animations/>
+                            </view>
+                        </tabViewItem>
+                        <tabViewItem label="PaintCode2Cappuccino" identifier="2" id="C0R-Gk-Qys">
+                            <view key="view" id="Yfm-3R-tfh">
+                                <rect key="frame" x="10" y="33" width="1053" height="576"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <button verticalHuggingPriority="750" id="Ays-Te-lPO">
+                                        <rect key="frame" x="66" y="469" width="106" height="36"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <animations/>
+                                        <buttonCell key="cell" type="smallSquare" title="Gradient Button" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="p8e-rn-mXf">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                    </button>
+                                </subviews>
+                                <animations/>
+                            </view>
+                        </tabViewItem>
+                        <tabViewItem label="SVG" identifier="" id="oM9-Dv-bNS">
+                            <view key="view" id="427-rc-w7l" userLabel="Tab View">
+                                <rect key="frame" x="10" y="33" width="1053" height="576"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="r9A-P1-Ia1">
+                                        <rect key="frame" x="15" y="551" width="83" height="17"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <animations/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Raphael Test" id="bO5-Lc-8Kv">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <customView id="9dB-0A-ews" userLabel="container view">
+                                        <rect key="frame" x="157" y="36" width="500" height="500"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <animations/>
+                                    </customView>
+                                    <button verticalHuggingPriority="750" id="ufH-Eh-YsW">
+                                        <rect key="frame" x="11" y="491" width="67" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <animations/>
+                                        <buttonCell key="cell" type="push" title="Play" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qUg-Cu-mXf">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                    </button>
+                                </subviews>
+                                <animations/>
+                            </view>
+                        </tabViewItem>
+                        <tabViewItem label="Accordéon" identifier="" id="fKl-ug-kYI">
+                            <view key="view" id="gLB-eq-umH">
+                                <rect key="frame" x="10" y="33" width="1053" height="576"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="2P8-Fs-Ywy">
+                                        <rect key="frame" x="31" y="522" width="198" height="17"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <animations/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Voir accordéon console OVH" id="o4X-RM-ckv">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </subviews>
+                                <animations/>
+                            </view>
+                        </tabViewItem>
+                        <tabViewItem label="Vidéo" identifier="" id="cdc-a6-RtH" userLabel="Video">
+                            <view key="view" id="mAh-Yd-pbi" userLabel="Tab View">
+                                <rect key="frame" x="10" y="33" width="1053" height="576"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Pln-oW-ZOp">
+                                        <rect key="frame" x="31" y="522" width="198" height="17"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <animations/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Video player test" id="QNR-0L-m4q">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <customView id="Q0A-L0-zIn" userLabel="container view">
+                                        <rect key="frame" x="167" y="73" width="500" height="500"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        <animations/>
+                                    </customView>
+                                    <button verticalHuggingPriority="750" id="MDh-nz-cGi">
+                                        <rect key="frame" x="28" y="452" width="67" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <animations/>
+                                        <buttonCell key="cell" type="push" title="Play" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Erw-h7-2Yx">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                    </button>
+                                    <button verticalHuggingPriority="750" id="RtE-1G-6CF">
+                                        <rect key="frame" x="26" y="409" width="70" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <animations/>
+                                        <buttonCell key="cell" type="push" title="Stop" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0jQ-se-ryL">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                    </button>
+                                </subviews>
+                                <animations/>
+                            </view>
+                        </tabViewItem>
+                        <tabViewItem label="Synchro" identifier="" id="oe6-yA-I00" userLabel="Synchro">
+                            <view key="view" id="TyQ-1q-4YO" userLabel="Tab View">
+                                <rect key="frame" x="10" y="33" width="1053" height="576"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <button verticalHuggingPriority="750" id="Rt6-0b-T02">
+                                        <rect key="frame" x="11" y="413" width="101" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <animations/>
+                                        <buttonCell key="cell" type="push" title="getObject" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="okt-G5-Ih6">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="testGetObject:" target="zyS-xK-gd0" id="CI7-7E-mKG"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" id="1hp-3y-tDQ">
+                                        <rect key="frame" x="12" y="373" width="100" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <animations/>
+                                        <buttonCell key="cell" type="push" title="setObject" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Eej-cC-n3N">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="testSetObject:" target="zyS-xK-gd0" id="ToQ-XY-Srn"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" id="fWB-dP-Rfc">
+                                        <rect key="frame" x="12" y="452" width="135" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <animations/>
+                                        <buttonCell key="cell" type="push" title="getChangesList" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fzi-ZW-xy7">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="testGetChangesList:" target="zyS-xK-gd0" id="e8Y-zm-i0N"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <animations/>
+                            </view>
+                        </tabViewItem>
+                    </tabViewItems>
+                </tabView>
+            </subviews>
+            <animations/>
+            <point key="canvasLocation" x="356.5" y="373"/>
+        </customView>
+        <customObject id="zyS-xK-gd0" userLabel="TestSynchroTabController" customClass="TestSynchroTabController">
+            <connections>
+                <outlet property="_containerView" destination="9dB-0A-ews" id="m4W-I9-d1B"/>
+                <outlet property="_tabView" destination="TyQ-1q-4YO" id="8z9-QD-mts"/>
+            </connections>
+        </customObject>
+        <customObject id="Lgy-NF-bkA" userLabel="TestSVGTabController" customClass="TestSVGTabController">
+            <connections>
+                <outlet property="_containerView" destination="9dB-0A-ews" id="Jsh-hh-yEU"/>
+                <outlet property="_tabView" destination="427-rc-w7l" id="ghd-by-Sjr"/>
+            </connections>
+        </customObject>
+        <customObject id="b88-7i-Gmt" userLabel="TestVideoTabController" customClass="TestVideoTabController">
+            <connections>
+                <outlet property="_containerView" destination="Q0A-L0-zIn" id="0b9-pa-AFS"/>
+                <outlet property="_tabView" destination="mAh-Yd-pbi" id="YBl-km-Ei4"/>
+            </connections>
+        </customObject>
+        <customObject id="dtl-Fa-cXd" userLabel="TestThemeTabController" customClass="TestThemeTabController">
+            <connections>
+                <outlet property="_buttonTest1" destination="aJh-0L-FrH" id="JUt-ae-w9a"/>
+                <outlet property="_containerView" destination="nin-Gz-8uC" id="wv1-Xk-GLV"/>
+                <outlet property="_tabView" destination="qGa-oX-T0S" id="BcI-hS-QLu"/>
+            </connections>
+        </customObject>
+        <customObject id="CXe-Sl-0lC" userLabel="TestTooltipTabController" customClass="TestTooltipTabController">
+            <connections>
+                <outlet property="_buttonTest1" destination="xRn-iU-xGG" id="Ckl-nv-2jn"/>
+                <outlet property="_containerView" destination="cHs-kX-KOS" id="8rA-Mi-59v"/>
+                <outlet property="_tabView" destination="lTt-MN-WyY" id="BM8-eW-1Fk"/>
+            </connections>
+        </customObject>
+        <customObject id="LWa-dg-lam" userLabel="TestPaintCodeTabController" customClass="TestTooltipTabController">
+            <connections>
+                <outlet property="_buttonTest1" destination="Ays-Te-lPO" id="CFe-9f-SjP"/>
+                <outlet property="_tabView" destination="Yfm-3R-tfh" id="Eax-RQ-li4"/>
+            </connections>
+        </customObject>
+    </objects>
+</document>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>TOTO</key>
+	<string>Il est ou le minou</string>
+	<key>LOGIN_WELCOME_LABEL</key>
+	<string>Veuillez vous identifier pour accéder à l'application</string>
+    
+    <!-- TargetViewController -->
+    <key>TARGET_FIELD_ERROR</key>
+    <string>Les champs "Identifiant unique", "Label console" et "Label application" doivent contenir au moins 3 caractères</string>
+    <key>TARGET_BAD_UID_FORMAT_ERROR</key>
+    <string>Mauvais format du champ Identifiant unique"", utiliser des majuscules, chiffres et underscore</string>
+    <key>TARGET_UID_ALREADY_EXISTS_ERROR</key>
+    <string>L'identifiant unique existe déjà, vous devez en choisir un unique</string>
+    
+    <!-- User Module Message -->
+    <key>USER_EMAIL_FORMAT_ERROR</key>
+    <string>L'email n'est pas au bon format</string>
+    <key>USER_FIELD_NOT_CORRECT</key>
+    <string>Certains champs sont incorrects</string>
+
+    <!-- Config Module Message -->
+    <key>MODULE_ALREADY_EXISTS_ERROR</key>
+    <string>Ce module fait déjà partie du target</string>
+
+
+
+
+
+
+</dict>
+</plist>
