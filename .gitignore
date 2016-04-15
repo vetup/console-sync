@@ -1,0 +1,18 @@
+# Mac
+.DS_Store
+
+# XCode tools
+
+*.xcodeproj*
+*.xcodeproj/*.pbxuser
+*.xcodeproj/*.perspectivev3
+*.xCodeSupport/
+*.XcodeSupport/
+*XcodeSupport/
+
+# Sublime Text
+
+*.sublime-project
+*.sublime-workspace
+
+
