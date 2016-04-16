@@ -12,6 +12,11 @@
 @import "../../../Backend/Managers/DataManager.j"
 @import "../../../Backend/Managers/ErrorManager.j"
 
+
+//TEST
+@class UniqueUser;
+
+
 @class AppController;
 
 @global KObjectTypeUser;
@@ -41,11 +46,15 @@ var C_COLUMN_UID                = "uid",
 
     @outlet LPMultiLineTextField     _analyseTF;
 
-     @outlet CPTextField      _nbUniqueUsers;
+    @outlet CPTextField      _nbUniqueUsers;
+
+    @outlet CPSearchField    _searchField;
 
     //Data
     CPMutableArray          _uniqueUsers;
     CPMutableArray          _linkedUsers;
+
+
 }
 
 
@@ -161,6 +170,46 @@ C_COLUMN_ID                 = "id",
     [[CPNotificationCenter defaultCenter] addObserver:self selector:@selector(_getCRVUniqueUsersNotification:)          name:WSGetCRVUniqueUsersNotification     object:nil];
     [[CPNotificationCenter defaultCenter] addObserver:self selector:@selector(_getCRVUsersNotification:)                name:WSGetCRVUsersNotification           object:nil];
     [[CPNotificationCenter defaultCenter] addObserver:self selector:@selector(_mergeUsersNotification:)                 name:WSMergeCRVUsersNotification           object:nil];
+
+
+    //Init search field
+
+    [_searchField setRecentsAutosaveName:"autosave"];
+    [_searchField setTarget:self];
+    [_searchField setAction:@selector(_updateFilter:)];
+    [_searchField setDelegate:self];
+
+
+//TEST PREDICATE
+    //var pred = [CPPredicate predicateWithFormat:@"SELF beginsWith 'Tomb'"];
+    /*
+    var pred = [CPPredicate predicateWithFormat:@"%K CONTAINS %@", "email", "ph"];
+
+
+    var testArray = [CPMutableArray new];
+
+    var user =  [UniqueUser new];
+    [user setEmail:@"email1"];
+    [user setFirstname:@"firstname 1"];
+    [user setLastname:@"lastname 1"];
+    [testArray addObject:user];
+
+    user =  [UniqueUser new];
+    [user setEmail:@"email2"];
+    [user setFirstname:@"firstname 2"];
+    [user setLastname:@"lastname 2"];
+    [testArray addObject:user];
+
+    user =  [UniqueUser new];
+    user.email = "phil.fuentes@gmail.com";
+    user.firstname = "philippe";
+    user.lastname = "fuentes";
+
+    [testArray addObject:user];
+
+    var result = [testArray filteredArrayUsingPredicate:pred];
+
+*/
 
 
     CPLog.debug(@"<<<< Leaving ModuleUniqueUserController::awakeFromCib");
@@ -286,10 +335,55 @@ C_COLUMN_ID                 = "id",
         _linkedUsers = [selectedUniqueUser linkedUsers];
         [self refreshLinkedUsers];
     }
+}
 
+- (void)_updateFilter:(id)sender
+{
+    CPLog.debug(@">>>> Entering ModuleUniqueUserController::_updateFilter");
+
+
+    var  uniqueUsers    = [[DataManager sharedManager] uniqueUsers],
+         result         = uniqueUsers,
+         searchString   = [sender stringValue];
+
+    if (![searchString isEqualToString:@""])
+    {
+        var predicate = [CPPredicate predicateWithFormat:@"%K CONTAINS %@", "email", searchString];
+        result = [uniqueUsers filteredArrayUsingPredicate:predicate];
+    }
+
+    _uniqueUsers    = result;
+
+    [_uniqueUserTable reloadData];
+    //[self _filteredArrayWithString:searchString];
+}
+
+- (void)_filteredArrayWithString:(CPString)value
+{
+
+    /*
+    var keyPath = categories[searchCategoryIndex],
+        predicate = [CPPredicate predicateWithFormat:@"%K CONTAINS %@", keyPath, value];
+
+    [predicateField setStringValue:[predicate predicateFormat]];
+    */
 }
 
 
+#pragma mark -
+#pragma mark Delegate CPSearchField
+
+- (IBAction)sendsWholeSearchString:(id)sender
+{
+    CPLog.debug(@"CPSearchField:  sendsWholeSearchString");
+    [_searchField setSendsWholeSearchString:[sender state]];
+}
+
+- (IBAction)searchesImmediately:(id)sender
+{
+    CPLog.debug(@"CPSearchField:  searchesImmediately");
+    [_searchField setSendsSearchStringImmediately:[sender state]];
+}
 
 
 #pragma mark Alert View - suppression de la couleur
@@ -301,7 +395,7 @@ C_COLUMN_ID                 = "id",
 
 
 #pragma mark -
-#pragma mark Delegate table colorTable
+#pragma mark Delegate table users
 
 
 - (int)numberOfRowsInTableView:(CPTableView)aTableView

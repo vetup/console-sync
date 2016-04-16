@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="ModuleViewController">
@@ -891,7 +891,7 @@
                                                                     </tableHeaderView>
                                                                 </scrollView>
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="loC-6p-3am">
-                                                                    <rect key="frame" x="236" y="409" width="38" height="17"/>
+                                                                    <rect key="frame" x="221" y="409" width="38" height="17"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Total:" id="dH7-Gx-Nfh">
                                                                         <font key="font" metaFont="system"/>
@@ -900,7 +900,7 @@
                                                                     </textFieldCell>
                                                                 </textField>
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="kOA-Uk-VZ4">
-                                                                    <rect key="frame" x="278" y="409" width="78" height="17"/>
+                                                                    <rect key="frame" x="263" y="409" width="78" height="17"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="0" id="8Uh-e8-6lA">
                                                                         <font key="font" metaFont="system"/>
@@ -917,6 +917,15 @@
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                 </textField>
+                                                                <searchField wantsLayer="YES" verticalHuggingPriority="750" id="Sza-91-VKC">
+                                                                    <rect key="frame" x="327" y="406" width="334" height="22"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                                                    <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" placeholderString="recherche email" usesSingleLineMode="YES" bezelStyle="round" id="N0N-kA-gSj">
+                                                                        <font key="font" metaFont="system"/>
+                                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                    </searchFieldCell>
+                                                                </searchField>
                                                             </subviews>
                                                         </customView>
                                                         <customView id="0iv-Y8-c8C" userLabel="Email invalides">
@@ -1140,6 +1149,7 @@
                 <outlet property="_container" destination="brb-qv-zvQ" id="guA-oh-Dow"/>
                 <outlet property="_linkedUserTable" destination="wpX-Xm-rCP" id="Ebo-CR-Cks"/>
                 <outlet property="_nbUniqueUsers" destination="kOA-Uk-VZ4" id="cRc-OH-k3S"/>
+                <outlet property="_searchField" destination="Sza-91-VKC" id="mWw-nE-lMY"/>
                 <outlet property="_uniqueUserTable" destination="a7N-fc-r7V" id="Qzb-Xm-NPa"/>
             </connections>
         </customObject>
