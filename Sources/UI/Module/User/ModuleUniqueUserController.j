@@ -54,6 +54,13 @@ var C_COLUMN_UID                = "uid",
     CPMutableArray          _uniqueUsers;
     CPMutableArray          _linkedUsers;
 
+    //Search menu pour le search field
+    CPMenu                  _searchMenuTemplate;
+    CPString                _menuItemPrefix;
+    CPArray                 _criteriasKeyPath;
+    CPArray                 _searchCriteriaIndexes;
+    CPInteger               _searchCriteriaIndex;
+
 
 }
 
@@ -177,7 +184,69 @@ C_COLUMN_ID                 = "id",
     [_searchField setRecentsAutosaveName:"autosave"];
     [_searchField setTarget:self];
     [_searchField setAction:@selector(_updateFilter:)];
+
+
+    //ajout du menu de recherche au searchfield
+
+    _searchMenuTemplate = [_searchField defaultSearchMenuTemplate];
+
+    _menuItemPrefix = @"   ";
+    _searchCriteriaIndex = 0;
+    _searchCriteriaIndexes = [CPArray arrayWithArray:[1, 2, 3, 4]];
+    _criteriasKeyPath  = ["email", "firstname", "lastname", "uid"];
+
+    [_searchMenuTemplate insertItemWithTitle:@"Rechercher par"
+                                     action:nil
+                              keyEquivalent:@""
+                                    atIndex:0];
+
+
+    var item = [[CPMenuItem alloc] initWithTitle:_menuItemPrefix + @"Email"
+                                          action:@selector(_changeSearchCriteria:)
+                                   keyEquivalent:@""];
+
+    [item setTarget:self];
+    [item setTag:1];
+    [item setState:CPOffState];
+    [_searchMenuTemplate insertItem:item atIndex:1];
+
+
+    item = [[CPMenuItem alloc] initWithTitle:_menuItemPrefix + @"Prénom"
+                                          action:@selector(_changeSearchCriteria:)
+                                   keyEquivalent:@""];
+
+    [item setTarget:self];
+    [item setTag:2];
+//    [item setState:CPOffState];
+    [item setState:CPOnState];
+    [_searchMenuTemplate insertItem:item atIndex:2];
+
+    item = [[CPMenuItem alloc] initWithTitle:_menuItemPrefix + @"Nom"
+                                      action:@selector(_changeSearchCriteria:)
+                                keyEquivalent:@""];
+    [item setTarget:self];
+    [item setTag:3];
+    [item setState:CPOffState];
+    [_searchMenuTemplate insertItem:item atIndex:3];
+
+    item = [[CPMenuItem alloc] initWithTitle:_menuItemPrefix + @"Id"
+                                      action:@selector(_changeSearchCriteria:)
+                                keyEquivalent:@""];
+    [item setTarget:self];
+    [item setTag:4];
+    [item setState:CPOffState];
+    [_searchMenuTemplate insertItem:item atIndex:4];
+
+
+    [_searchField setSearchMenuTemplate:_searchMenuTemplate];
+
+
+    [self _changeSearchCriteria:[[_searchField menu] itemAtIndex:1]];
+    [self _updateFilter:_searchField];
+
     [_searchField setDelegate:self];
+
+
 
 
 //TEST PREDICATE
@@ -330,49 +399,77 @@ C_COLUMN_ID                 = "id",
 {
     var row = [_uniqueUserTable selectedRow];
 
-    if (row >= 0) {
+    if (row >= 0)
+    {
         var selectedUniqueUser  = [_uniqueUsers objectAtIndex:row];
         _linkedUsers = [selectedUniqueUser linkedUsers];
         [self refreshLinkedUsers];
     }
 }
 
+
+- (void)_changeSearchCriteria:(CPMenuItem)menuItem
+{
+    _searchCriteriaIndex = [menuItem tag] - 1;
+
+    [_searchField setPlaceholderString:[[menuItem title] substringFromIndex:[_menuItemPrefix length]]];
+
+    [self _updateSearchMenuTemplate];
+}
+
+- (void)_updateSearchMenuTemplate
+{
+    for (var i = 0; i < _searchCriteriaIndexes.length; i++)
+        [[_searchMenuTemplate itemAtIndex:_searchCriteriaIndexes[i]] setState:CPOffState];
+
+
+    var selectedCriteriaIndex = _searchCriteriaIndexes[_searchCriteriaIndex],
+        menuItem = [_searchMenuTemplate itemAtIndex:selectedCriteriaIndex];
+
+    [menuItem setState:CPOnState];
+
+    [_searchField setSearchMenuTemplate:_searchMenuTemplate];
+
+    //on relance la recherche
+    [self _updateFilter:_searchField];
+}
+
 - (void)_updateFilter:(id)sender
 {
-    CPLog.debug(@">>>> Entering ModuleUniqueUserController::_updateFilter");
-
+//    CPLog.debug(@">>>> Entering ModuleUniqueUserController::_updateFilter");
 
     var  uniqueUsers    = [[DataManager sharedManager] uniqueUsers],
          result         = uniqueUsers,
-         searchString   = [sender stringValue];
+         searchString   = [sender stringValue],
+         keyPath        = _criteriasKeyPath[_searchCriteriaIndex];
 
     if (![searchString isEqualToString:@""])
     {
-        var predicate = [CPPredicate predicateWithFormat:@"%K CONTAINS %@", "email", searchString];
+        var predicate = nil;
+        if ([keyPath isEqualToString:@"uid"])
+        {
+            var uid = [searchString intValue];
+            predicate = [CPPredicate predicateWithFormat:@"%K = %d", keyPath, uid];
+        }
+        else
+        {
+            predicate = [CPPredicate predicateWithFormat:@"%K CONTAINS[cd] %@", keyPath, searchString];
+        }
+
         result = [uniqueUsers filteredArrayUsingPredicate:predicate];
     }
 
     _uniqueUsers    = result;
 
+    [_nbUniqueUsers setStringValue:[_uniqueUsers count]];
     [_uniqueUserTable reloadData];
-    //[self _filteredArrayWithString:searchString];
-}
-
-- (void)_filteredArrayWithString:(CPString)value
-{
-
-    /*
-    var keyPath = categories[searchCategoryIndex],
-        predicate = [CPPredicate predicateWithFormat:@"%K CONTAINS %@", keyPath, value];
-
-    [predicateField setStringValue:[predicate predicateFormat]];
-    */
 }
 
 
 #pragma mark -
 #pragma mark Delegate CPSearchField
 
+/*
 - (IBAction)sendsWholeSearchString:(id)sender
 {
     CPLog.debug(@"CPSearchField:  sendsWholeSearchString");
@@ -384,7 +481,7 @@ C_COLUMN_ID                 = "id",
     CPLog.debug(@"CPSearchField:  searchesImmediately");
     [_searchField setSendsSearchStringImmediately:[sender state]];
 }
-
+*/
 
 #pragma mark Alert View - suppression de la couleur
 
