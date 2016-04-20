@@ -1,6 +1,7 @@
 # Mac
 .DS_Store
 
+
 # XCode tools
 
 *.xcodeproj*
@@ -15,8 +16,9 @@
 *.sublime-project
 *.sublime-workspace
 
-# build UI
+# build
 
+Build
 Resources/*.cib
 Resources/nib/*.cib
 
