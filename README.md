@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/vetup/console-sync.svg?branch=preprod)](https://travis-ci.org/vetup/console-sync)
+
 # Console Sync
 
 
