@@ -23,7 +23,7 @@
     [breed setName:@"dogbreed"];
     [breed setSpecieId:13];
 
-    [self assert:201 equals:[breed uid]];
+    [self assert:202 equals:[breed uid]];
     [self assert:@"dogbreed" equals:[breed name]];
     [self assert:13 equals:[breed specieId]];
 }
