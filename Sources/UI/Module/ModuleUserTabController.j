@@ -9,6 +9,7 @@
 //Permet de pouvoir utiliser les objets suivant lies aux tabs
 @import "User/ModuleCleanUserController.j"
 @import "User/ModuleUniqueUserController.j"
+@import "User/ModuleAnalyseUserController.j"
 
 
 /*

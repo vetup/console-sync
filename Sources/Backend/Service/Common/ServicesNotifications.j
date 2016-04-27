@@ -42,6 +42,7 @@ WSDeleteCRVUsersNotification                    = @"WSDeleteCRVUsersNotification
 WSDeleteCRVUserWithInvalidClinicIdNotification  = @"WSDeleteCRVUserWithInvalidClinicIdNotification";
 WSMergeCRVUsersNotification                     = @"WSMergeCRVUsersNotification";
 WSGetCRVUniqueUsersNotification                 = @"WSGetCRVUniqueUsersNotification";
+WSGetVetupUsersNotification                     = @"WSGetVetupUsersNotification";
 
 
 

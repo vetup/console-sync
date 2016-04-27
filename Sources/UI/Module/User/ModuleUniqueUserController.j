@@ -640,7 +640,6 @@ C_COLUMN_ID                 = "id",
 
     if (nil == error)
     {
-
         var uniqueUsers = [[DataManager sharedManager] uniqueUsers];
         _uniqueUsers    = uniqueUsers;
 

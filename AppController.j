@@ -160,7 +160,7 @@ var VetupAuthenticationKey = @"Vetup Authentication";
 
 - (void)startProgress
 {
-    [_requestInProgressView show];
+   // [_requestInProgressView show];
     _nbRequestInProgress++;
 }
 

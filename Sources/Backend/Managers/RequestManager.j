@@ -18,8 +18,7 @@
 @import "../Service/Jobs/WSDeleteCRVUserWithInvalidClinicIdJob.j"
 @import "../Service/Jobs/WSMergeCRVUsersJob.j"
 @import "../Service/Jobs/WSGetCRVUniqueUsersJob.j"
-
-
+@import "../Service/Jobs/WSGetVetupUsersJob.j"
 
 @import "../Service/JobsManagement/JobQueue.j";
 @import "../Service/JobsManagement/JobConcurrentQueue.j";
@@ -164,6 +163,15 @@ var requestManagerSharedInstance = nil;
     var  getCRVUniqueUsersJob = [[WSGetCRVUniqueUsersJob alloc] init];
     [_jobConcurrentQueue addJobToQueue:getCRVUniqueUsersJob];
     CPLog.info(@"<<<< Leaving RequestManager::performGetCRVUniqueUsers");
+}
+
+//$pageSize, $currentPage
+- (void)performGetVetupUsers:(CPNumber)pageSize currentPage:(CPNumber)currentPage
+{
+    CPLog.info(@">>>> Entering RequestManager::performGetVetupUsers");
+    var  getVetupUsersJob = [[WSGetVetupUsersJob alloc] initWithData:pageSize currentPage:currentPage];
+    [_jobQueue addJobToQueue:getVetupUsersJob];
+    CPLog.info(@"<<<< Leaving RequestManager::performGetVetupUsers");
 }
 
 

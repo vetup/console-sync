@@ -24,6 +24,7 @@
         firstname       = @"";
         lastname        = @"";
         password        = @"";
+        creationDate    = @"";
         linkedUsers     = nil;
         nbLinkedUsers   = 0;
     }

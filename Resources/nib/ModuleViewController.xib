@@ -1084,6 +1084,600 @@
                                                     </subviews>
                                                 </view>
                                             </tabViewItem>
+                                            <tabViewItem label="Analyse" identifier="1" id="Ymh-fe-jof" userLabel="Analyse">
+                                                <view key="view" id="bCf-BB-I37" userLabel="Container">
+                                                    <rect key="frame" x="10" y="7" width="1656" height="493"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <subviews>
+                                                        <customView id="EUQ-E4-1tp" userLabel="vetup user container">
+                                                            <rect key="frame" x="2" y="29" width="1230" height="440"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
+                                                            <subviews>
+                                                                <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="LxS-Oh-eRM" userLabel="CRV User Table View">
+                                                                    <rect key="frame" x="8" y="14" width="1211" height="277"/>
+                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                    <clipView key="contentView" id="t2U-xu-z9m">
+                                                                        <rect key="frame" x="1" y="0.0" width="1209" height="276"/>
+                                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                        <subviews>
+                                                                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" headerView="n6u-0q-tXV" id="j4W-mv-9mr">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="1129" height="19"/>
+                                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                                <size key="intercellSpacing" width="3" height="2"/>
+                                                                                <color key="backgroundColor" red="0.94509803920000002" green="0.87843137250000003" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                                                <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                                                                <tableColumns>
+                                                                                    <tableColumn identifier="uid" width="53.12890625" minWidth="10" maxWidth="1000" id="RxV-SY-fhd">
+                                                                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="id">
+                                                                                            <font key="font" metaFont="smallSystem"/>
+                                                                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                                                            <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                                                                        </tableHeaderCell>
+                                                                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="zQh-q9-VWF">
+                                                                                            <font key="font" metaFont="system"/>
+                                                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                                        </textFieldCell>
+                                                                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                                                    </tableColumn>
+                                                                                    <tableColumn identifier="userType" width="72.37890625" minWidth="10" maxWidth="3.4028234663852886e+38" id="Vk6-hT-INq">
+                                                                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="userType">
+                                                                                            <font key="font" metaFont="smallSystem"/>
+                                                                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                                        </tableHeaderCell>
+                                                                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="Xwt-ju-ufx">
+                                                                                            <font key="font" metaFont="system"/>
+                                                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                                        </textFieldCell>
+                                                                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                                                    </tableColumn>
+                                                                                    <tableColumn identifier="clinicId" width="68.375" minWidth="10" maxWidth="3.4028234663852886e+38" id="d2r-Qj-oB3">
+                                                                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="clinicId">
+                                                                                            <font key="font" metaFont="smallSystem"/>
+                                                                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                                        </tableHeaderCell>
+                                                                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="Hqz-Nf-auJ">
+                                                                                            <font key="font" metaFont="system"/>
+                                                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                                        </textFieldCell>
+                                                                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                                                    </tableColumn>
+                                                                                    <tableColumn identifier="email" width="185.71484375" minWidth="10" maxWidth="1000" id="ZYz-TF-r3p">
+                                                                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="email">
+                                                                                            <font key="font" metaFont="smallSystem"/>
+                                                                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                                                            <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                                                                        </tableHeaderCell>
+                                                                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="qI9-7a-j78">
+                                                                                            <font key="font" metaFont="system"/>
+                                                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                                        </textFieldCell>
+                                                                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                                                    </tableColumn>
+                                                                                    <tableColumn identifier="lastname" width="114.34375" minWidth="10" maxWidth="3.4028234663852886e+38" id="TC6-Vd-hdQ">
+                                                                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="nom">
+                                                                                            <font key="font" metaFont="smallSystem"/>
+                                                                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                                        </tableHeaderCell>
+                                                                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="B6c-71-qcJ">
+                                                                                            <font key="font" metaFont="system"/>
+                                                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                                        </textFieldCell>
+                                                                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                                                    </tableColumn>
+                                                                                    <tableColumn identifier="firstname" width="117.16796875" minWidth="10" maxWidth="3.4028234663852886e+38" id="qKk-8R-v80">
+                                                                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="prénom">
+                                                                                            <font key="font" metaFont="smallSystem"/>
+                                                                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                                        </tableHeaderCell>
+                                                                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="z6g-3K-hCG">
+                                                                                            <font key="font" metaFont="system"/>
+                                                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                                        </textFieldCell>
+                                                                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                                                    </tableColumn>
+                                                                                    <tableColumn identifier="password" width="81.703125" minWidth="10" maxWidth="3.4028234663852886e+38" id="qCf-bD-BLc" userLabel="password">
+                                                                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="password">
+                                                                                            <font key="font" metaFont="smallSystem"/>
+                                                                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                                        </tableHeaderCell>
+                                                                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="6JZ-cO-vEr">
+                                                                                            <font key="font" metaFont="system"/>
+                                                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                                        </textFieldCell>
+                                                                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                                                    </tableColumn>
+                                                                                    <tableColumn identifier="lastUpdate" width="127.6875" minWidth="10" maxWidth="3.4028234663852886e+38" id="Nnc-sx-F1Z" userLabel="lastUpdate">
+                                                                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="lastUpdate">
+                                                                                            <font key="font" metaFont="smallSystem"/>
+                                                                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                                        </tableHeaderCell>
+                                                                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="7cN-h1-Pl7">
+                                                                                            <font key="font" metaFont="system"/>
+                                                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                                        </textFieldCell>
+                                                                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                                                    </tableColumn>
+                                                                                    <tableColumn identifier="vetupGuid" width="159.8359375" minWidth="10" maxWidth="3.4028234663852886e+38" id="BrE-hd-XL7" userLabel="vetupGuid">
+                                                                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="vetupGuid">
+                                                                                            <font key="font" metaFont="smallSystem"/>
+                                                                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                                        </tableHeaderCell>
+                                                                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="aZS-pY-92m">
+                                                                                            <font key="font" metaFont="system"/>
+                                                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                                        </textFieldCell>
+                                                                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                                                    </tableColumn>
+                                                                                    <tableColumn identifier="registrationReferrer" width="119" minWidth="10" maxWidth="3.4028234663852886e+38" id="dJO-um-0gn" userLabel="registrationReferrer">
+                                                                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="registrationReferrer">
+                                                                                            <font key="font" metaFont="smallSystem"/>
+                                                                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                                        </tableHeaderCell>
+                                                                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="kHz-Lv-tnG">
+                                                                                            <font key="font" metaFont="system"/>
+                                                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                                        </textFieldCell>
+                                                                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                                                    </tableColumn>
+                                                                                </tableColumns>
+                                                                            </tableView>
+                                                                        </subviews>
+                                                                        <color key="backgroundColor" red="0.87058823529999996" green="0.81176470590000005" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    </clipView>
+                                                                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="w9O-lp-p75">
+                                                                        <rect key="frame" x="1" y="352" width="651" height="15"/>
+                                                                        <autoresizingMask key="autoresizingMask"/>
+                                                                    </scroller>
+                                                                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="951-2f-7HW">
+                                                                        <rect key="frame" x="224" y="17" width="15" height="102"/>
+                                                                        <autoresizingMask key="autoresizingMask"/>
+                                                                    </scroller>
+                                                                    <tableHeaderView key="headerView" id="n6u-0q-tXV">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="1209" height="17"/>
+                                                                        <autoresizingMask key="autoresizingMask"/>
+                                                                    </tableHeaderView>
+                                                                </scrollView>
+                                                                <scrollView autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="ic1-f0-BUU">
+                                                                    <rect key="frame" x="8" y="304" width="715" height="130"/>
+                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                                    <clipView key="contentView" copiesOnScroll="NO" id="wVn-av-n0x">
+                                                                        <rect key="frame" x="1" y="1" width="698" height="128"/>
+                                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                        <subviews>
+                                                                            <predicateEditor verticalHuggingPriority="750" nestingMode="compound" canRemoveAllRows="YES" rowHeight="25" id="AEg-Kj-jc5">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="698" height="200"/>
+                                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                                                <rowTemplates>
+                                                                                    <predicateEditorRowTemplate rowType="compound" id="JGh-XU-5uG">
+                                                                                        <popUpMenus>
+                                                                                            <menu id="bon-U2-W0Q">
+                                                                                                <items>
+                                                                                                    <menuItem title="All" id="Pla-75-lJH">
+                                                                                                        <integer key="representedObject" value="1"/>
+                                                                                                    </menuItem>
+                                                                                                    <menuItem title="Any" state="on" id="IrX-dd-Z1K">
+                                                                                                        <integer key="representedObject" value="2"/>
+                                                                                                    </menuItem>
+                                                                                                </items>
+                                                                                            </menu>
+                                                                                            <menu id="Vcl-LV-sWC">
+                                                                                                <items>
+                                                                                                    <menuItem title="of the following are true" state="on" id="cYR-27-twO"/>
+                                                                                                </items>
+                                                                                            </menu>
+                                                                                        </popUpMenus>
+                                                                                    </predicateEditorRowTemplate>
+                                                                                    <predicateEditorRowTemplate rowType="simple" id="9Wc-1k-MZI">
+                                                                                        <array key="leftExpressionObject">
+                                                                                            <expression type="keyPath">
+                                                                                                <string key="keyPath">email</string>
+                                                                                            </expression>
+                                                                                        </array>
+                                                                                        <integer key="rightExpressionObject" value="700"/>
+                                                                                        <comparisonPredicateOptions key="options" caseInsensitive="YES" diacriticInsensitive="YES"/>
+                                                                                        <popUpMenus>
+                                                                                            <menu id="Rh7-20-sRq">
+                                                                                                <items>
+                                                                                                    <menuItem title="email" state="on" id="b8c-XE-zk5">
+                                                                                                        <expression key="representedObject" type="keyPath">
+                                                                                                            <string key="keyPath">email</string>
+                                                                                                        </expression>
+                                                                                                    </menuItem>
+                                                                                                </items>
+                                                                                            </menu>
+                                                                                            <menu id="mP7-hx-pSb">
+                                                                                                <items>
+                                                                                                    <menuItem title="contains" state="on" id="Mou-4l-15C">
+                                                                                                        <integer key="representedObject" value="99"/>
+                                                                                                    </menuItem>
+                                                                                                    <menuItem title="is not" id="MSH-EE-jmr">
+                                                                                                        <integer key="representedObject" value="5"/>
+                                                                                                    </menuItem>
+                                                                                                </items>
+                                                                                            </menu>
+                                                                                        </popUpMenus>
+                                                                                    </predicateEditorRowTemplate>
+                                                                                    <predicateEditorRowTemplate rowType="simple" id="yZk-kr-vfh">
+                                                                                        <array key="leftExpressionObject">
+                                                                                            <expression type="keyPath">
+                                                                                                <string key="keyPath">firstname</string>
+                                                                                            </expression>
+                                                                                        </array>
+                                                                                        <integer key="rightExpressionObject" value="700"/>
+                                                                                        <comparisonPredicateOptions key="options" caseInsensitive="YES" diacriticInsensitive="YES"/>
+                                                                                        <popUpMenus>
+                                                                                            <menu id="kda-Ug-hJF">
+                                                                                                <items>
+                                                                                                    <menuItem title="firstname" state="on" id="LJw-he-Bw3">
+                                                                                                        <expression key="representedObject" type="keyPath">
+                                                                                                            <string key="keyPath">firstname</string>
+                                                                                                        </expression>
+                                                                                                    </menuItem>
+                                                                                                </items>
+                                                                                            </menu>
+                                                                                            <menu id="bO0-CB-73b">
+                                                                                                <items>
+                                                                                                    <menuItem title="contains" state="on" id="ClP-5Q-m6n">
+                                                                                                        <integer key="representedObject" value="99"/>
+                                                                                                    </menuItem>
+                                                                                                    <menuItem title="is" id="x3F-w6-Ci6">
+                                                                                                        <integer key="representedObject" value="4"/>
+                                                                                                    </menuItem>
+                                                                                                </items>
+                                                                                            </menu>
+                                                                                        </popUpMenus>
+                                                                                    </predicateEditorRowTemplate>
+                                                                                    <predicateEditorRowTemplate rowType="simple" id="ClX-3u-dUe">
+                                                                                        <array key="leftExpressionObject">
+                                                                                            <expression type="keyPath">
+                                                                                                <string key="keyPath">lastname</string>
+                                                                                            </expression>
+                                                                                        </array>
+                                                                                        <integer key="rightExpressionObject" value="700"/>
+                                                                                        <comparisonPredicateOptions key="options" caseInsensitive="YES" diacriticInsensitive="YES"/>
+                                                                                        <popUpMenus>
+                                                                                            <menu id="3MZ-SL-Rek">
+                                                                                                <items>
+                                                                                                    <menuItem title="lastname" state="on" id="SdY-x5-heG">
+                                                                                                        <expression key="representedObject" type="keyPath">
+                                                                                                            <string key="keyPath">lastname</string>
+                                                                                                        </expression>
+                                                                                                    </menuItem>
+                                                                                                </items>
+                                                                                            </menu>
+                                                                                            <menu id="16U-Mb-Zsc">
+                                                                                                <items>
+                                                                                                    <menuItem title="contains" state="on" id="uGF-ll-ztj">
+                                                                                                        <integer key="representedObject" value="99"/>
+                                                                                                    </menuItem>
+                                                                                                </items>
+                                                                                            </menu>
+                                                                                        </popUpMenus>
+                                                                                    </predicateEditorRowTemplate>
+                                                                                    <predicateEditorRowTemplate rowType="simple" id="ETX-Cj-MVN">
+                                                                                        <array key="leftExpressionObject">
+                                                                                            <expression type="keyPath">
+                                                                                                <string key="keyPath">vetupGuid</string>
+                                                                                            </expression>
+                                                                                        </array>
+                                                                                        <integer key="rightExpressionObject" value="700"/>
+                                                                                        <comparisonPredicateOptions key="options" caseInsensitive="YES" diacriticInsensitive="YES"/>
+                                                                                        <popUpMenus>
+                                                                                            <menu id="6uU-b8-Cla">
+                                                                                                <items>
+                                                                                                    <menuItem title="vetupGuid" state="on" id="Fj2-A4-vqm">
+                                                                                                        <expression key="representedObject" type="keyPath">
+                                                                                                            <string key="keyPath">vetupGuid</string>
+                                                                                                        </expression>
+                                                                                                    </menuItem>
+                                                                                                </items>
+                                                                                            </menu>
+                                                                                            <menu id="rlF-Ux-0V5">
+                                                                                                <items>
+                                                                                                    <menuItem title="is" state="on" id="Oex-Ww-c3B">
+                                                                                                        <integer key="representedObject" value="4"/>
+                                                                                                    </menuItem>
+                                                                                                    <menuItem title="is not" id="Im4-Ho-dMM">
+                                                                                                        <integer key="representedObject" value="5"/>
+                                                                                                    </menuItem>
+                                                                                                </items>
+                                                                                            </menu>
+                                                                                        </popUpMenus>
+                                                                                    </predicateEditorRowTemplate>
+                                                                                    <predicateEditorRowTemplate rowType="simple" id="9dQ-EZ-RDl">
+                                                                                        <array key="leftExpressionObject">
+                                                                                            <expression type="keyPath">
+                                                                                                <string key="keyPath">uid</string>
+                                                                                            </expression>
+                                                                                        </array>
+                                                                                        <integer key="rightExpressionObject" value="300"/>
+                                                                                        <popUpMenus>
+                                                                                            <menu id="YWx-tu-f3d">
+                                                                                                <items>
+                                                                                                    <menuItem title="uid" state="on" id="I0S-bI-TZt">
+                                                                                                        <expression key="representedObject" type="keyPath">
+                                                                                                            <string key="keyPath">uid</string>
+                                                                                                        </expression>
+                                                                                                    </menuItem>
+                                                                                                </items>
+                                                                                            </menu>
+                                                                                            <menu id="asV-1H-bY3">
+                                                                                                <items>
+                                                                                                    <menuItem title="is" state="on" id="KSg-W6-E4f">
+                                                                                                        <integer key="representedObject" value="4"/>
+                                                                                                    </menuItem>
+                                                                                                    <menuItem title="is less than or equal to" id="UPs-Ho-Pt8">
+                                                                                                        <integer key="representedObject" value="1"/>
+                                                                                                    </menuItem>
+                                                                                                    <menuItem title="is greater than or equal to" id="Xhj-uk-Gp6">
+                                                                                                        <integer key="representedObject" value="3"/>
+                                                                                                    </menuItem>
+                                                                                                </items>
+                                                                                            </menu>
+                                                                                        </popUpMenus>
+                                                                                    </predicateEditorRowTemplate>
+                                                                                    <predicateEditorRowTemplate rowType="simple" id="x1k-gt-We8">
+                                                                                        <array key="leftExpressionObject">
+                                                                                            <expression type="keyPath">
+                                                                                                <string key="keyPath">clinicId</string>
+                                                                                            </expression>
+                                                                                        </array>
+                                                                                        <integer key="rightExpressionObject" value="300"/>
+                                                                                        <popUpMenus>
+                                                                                            <menu id="9eh-0q-Uqu">
+                                                                                                <items>
+                                                                                                    <menuItem title="clinicId" state="on" id="8l7-Jn-vb0">
+                                                                                                        <expression key="representedObject" type="keyPath">
+                                                                                                            <string key="keyPath">clinicId</string>
+                                                                                                        </expression>
+                                                                                                    </menuItem>
+                                                                                                </items>
+                                                                                            </menu>
+                                                                                            <menu id="9ZR-Jh-38p">
+                                                                                                <items>
+                                                                                                    <menuItem title="is" state="on" id="iQY-hK-HKr">
+                                                                                                        <integer key="representedObject" value="4"/>
+                                                                                                    </menuItem>
+                                                                                                    <menuItem title="is not" id="zMb-Md-ntE">
+                                                                                                        <integer key="representedObject" value="5"/>
+                                                                                                    </menuItem>
+                                                                                                </items>
+                                                                                            </menu>
+                                                                                        </popUpMenus>
+                                                                                    </predicateEditorRowTemplate>
+                                                                                    <predicateEditorRowTemplate rowType="simple" id="ry9-lg-4au">
+                                                                                        <array key="leftExpressionObject">
+                                                                                            <expression type="keyPath">
+                                                                                                <string key="keyPath">registrationReferrer</string>
+                                                                                            </expression>
+                                                                                        </array>
+                                                                                        <array key="rightExpressionObject">
+                                                                                            <expression type="constant">
+                                                                                                <string key="constantValue">Import</string>
+                                                                                            </expression>
+                                                                                            <expression type="constant">
+                                                                                                <string key="constantValue">CLI</string>
+                                                                                            </expression>
+                                                                                            <expression type="constant">
+                                                                                                <string key="constantValue">WebApp</string>
+                                                                                            </expression>
+                                                                                            <expression type="constant">
+                                                                                                <string key="constantValue">MobileApp</string>
+                                                                                            </expression>
+                                                                                        </array>
+                                                                                        <comparisonPredicateOptions key="options" caseInsensitive="YES"/>
+                                                                                        <popUpMenus>
+                                                                                            <menu id="pBP-UI-BiF">
+                                                                                                <items>
+                                                                                                    <menuItem title="registrationReferrer" state="on" id="CTb-Fn-vfb">
+                                                                                                        <expression key="representedObject" type="keyPath">
+                                                                                                            <string key="keyPath">registrationReferrer</string>
+                                                                                                        </expression>
+                                                                                                    </menuItem>
+                                                                                                </items>
+                                                                                            </menu>
+                                                                                            <menu id="K39-dM-Z94">
+                                                                                                <items>
+                                                                                                    <menuItem title="is" state="on" id="Ib9-sP-pcg">
+                                                                                                        <integer key="representedObject" value="4"/>
+                                                                                                    </menuItem>
+                                                                                                    <menuItem title="is not" id="qlp-vF-EMH">
+                                                                                                        <integer key="representedObject" value="5"/>
+                                                                                                    </menuItem>
+                                                                                                </items>
+                                                                                            </menu>
+                                                                                            <menu id="MIk-a4-Lxh">
+                                                                                                <items>
+                                                                                                    <menuItem title="Import" state="on" id="GK1-rH-ttb">
+                                                                                                        <expression key="representedObject" type="constant">
+                                                                                                            <string key="constantValue">Import</string>
+                                                                                                        </expression>
+                                                                                                    </menuItem>
+                                                                                                    <menuItem title="CLI" id="NzU-e7-K3R">
+                                                                                                        <expression key="representedObject" type="constant">
+                                                                                                            <string key="constantValue">CLI</string>
+                                                                                                        </expression>
+                                                                                                    </menuItem>
+                                                                                                    <menuItem title="WebApp" id="JUL-Es-d2g">
+                                                                                                        <expression key="representedObject" type="constant">
+                                                                                                            <string key="constantValue">WebApp</string>
+                                                                                                        </expression>
+                                                                                                    </menuItem>
+                                                                                                    <menuItem title="MobileApp" id="w3v-vB-IyS">
+                                                                                                        <expression key="representedObject" type="constant">
+                                                                                                            <string key="constantValue">MobileApp</string>
+                                                                                                        </expression>
+                                                                                                    </menuItem>
+                                                                                                </items>
+                                                                                            </menu>
+                                                                                        </popUpMenus>
+                                                                                    </predicateEditorRowTemplate>
+                                                                                </rowTemplates>
+                                                                            </predicateEditor>
+                                                                        </subviews>
+                                                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    </clipView>
+                                                                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="sue-MP-tPo">
+                                                                        <rect key="frame" x="-100" y="-100" width="360" height="15"/>
+                                                                        <autoresizingMask key="autoresizingMask"/>
+                                                                    </scroller>
+                                                                    <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="Rws-1E-m2S">
+                                                                        <rect key="frame" x="699" y="1" width="15" height="128"/>
+                                                                        <autoresizingMask key="autoresizingMask"/>
+                                                                    </scroller>
+                                                                </scrollView>
+                                                                <button verticalHuggingPriority="750" id="cZs-2m-vxg">
+                                                                    <rect key="frame" x="734" y="297" width="152" height="32"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                    <buttonCell key="cell" type="push" title="test multiselection" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="acz-lW-hm2">
+                                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                        <font key="font" metaFont="system"/>
+                                                                    </buttonCell>
+                                                                    <connections>
+                                                                        <action selector="testMultiselection:" target="0kn-5G-8lx" id="AnO-6s-kvM"/>
+                                                                    </connections>
+                                                                </button>
+                                                            </subviews>
+                                                        </customView>
+                                                        <button verticalHuggingPriority="750" id="RaC-PH-kKy">
+                                                            <rect key="frame" x="4" y="463" width="144" height="32"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                            <buttonCell key="cell" type="push" title="Load vetup users" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dc4-OO-YnE">
+                                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                <font key="font" metaFont="system"/>
+                                                            </buttonCell>
+                                                            <connections>
+                                                                <action selector="refreshDataFromServerAction:" target="0kn-5G-8lx" id="Mll-mr-miQ"/>
+                                                            </connections>
+                                                        </button>
+                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Rfp-YH-1lj">
+                                                            <rect key="frame" x="152" y="471" width="73" height="17"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Progress:" id="cmN-2h-msN">
+                                                                <font key="font" metaFont="system"/>
+                                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                            </textFieldCell>
+                                                        </textField>
+                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="n4b-Pu-anT">
+                                                            <rect key="frame" x="266" y="471" width="88" height="17"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Users loaded:" id="lc8-qe-dcS">
+                                                                <font key="font" metaFont="system"/>
+                                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                            </textFieldCell>
+                                                        </textField>
+                                                        <textField verticalHuggingPriority="750" id="7oU-2i-CU6">
+                                                            <rect key="frame" x="215" y="469" width="48" height="22"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="JRf-hx-Ktr">
+                                                                <font key="font" metaFont="system"/>
+                                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                            </textFieldCell>
+                                                        </textField>
+                                                        <textField verticalHuggingPriority="750" id="qmz-lw-C6W">
+                                                            <rect key="frame" x="355" y="468" width="100" height="22"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" drawsBackground="YES" id="SMW-7u-4of">
+                                                                <font key="font" metaFont="system"/>
+                                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                            </textFieldCell>
+                                                        </textField>
+                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="2CJ-l7-4Tb">
+                                                            <rect key="frame" x="8" y="11" width="1226" height="17"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Aucun filtre" id="xWP-4P-zey">
+                                                                <font key="font" metaFont="system"/>
+                                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                            </textFieldCell>
+                                                        </textField>
+                                                        <customView id="V8e-8T-bW3" userLabel="Divers">
+                                                            <rect key="frame" x="1240" y="29" width="411" height="434"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
+                                                            <subviews>
+                                                                <textField verticalHuggingPriority="750" id="Rdp-EL-vAv" userLabel="AnalyseTF" customClass="LPMultiLineTextField">
+                                                                    <rect key="frame" x="7" y="9" width="480" height="161"/>
+                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
+                                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="xn5-Nx-LQx">
+                                                                        <font key="font" metaFont="system"/>
+                                                                        <string key="title">Filtres:
+- CRV-597 : retrouver les clinicId = 0 et vetupGuid != null
+- referer à "Import" et VetupGuid != null
+
+TODO:
+- menu contextuel sur row (multiselection):
+   - supression du user
+   - renvoyer les infos du users (nombre d'animaux attachés, visites, rappels...)
+- colonne editable =&gt; modification de l'email, du clinicId...</string>
+                                                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                    </textFieldCell>
+                                                                </textField>
+                                                            </subviews>
+                                                        </customView>
+                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="UNs-du-uy2">
+                                                            <rect key="frame" x="476" y="471" width="79" height="17"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Table count:" id="NBp-6I-L6s">
+                                                                <font key="font" metaFont="system"/>
+                                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                            </textFieldCell>
+                                                        </textField>
+                                                        <textField verticalHuggingPriority="750" id="zkE-1s-7AW">
+                                                            <rect key="frame" x="561" y="468" width="64" height="22"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" drawsBackground="YES" id="acQ-6G-rpy">
+                                                                <font key="font" metaFont="system"/>
+                                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                            </textFieldCell>
+                                                        </textField>
+                                                        <button id="cEb-Wp-2bM">
+                                                            <rect key="frame" x="693" y="464" width="30" height="30"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                            <buttonCell key="cell" type="square" title="+" bezelStyle="shadowlessSquare" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xgY-BB-3Ch">
+                                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                <font key="font" metaFont="system"/>
+                                                            </buttonCell>
+                                                            <connections>
+                                                                <action selector="addRow:" target="AEg-Kj-jc5" id="eRg-NH-B38"/>
+                                                            </connections>
+                                                        </button>
+                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="kjd-6K-QhT">
+                                                            <rect key="frame" x="645" y="469" width="42" height="17"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Filtres" id="4Jj-kt-wao">
+                                                                <font key="font" metaFont="system"/>
+                                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                            </textFieldCell>
+                                                        </textField>
+                                                    </subviews>
+                                                </view>
+                                            </tabViewItem>
                                         </tabViewItems>
                                     </tabView>
                                 </subviews>
@@ -1151,6 +1745,17 @@
                 <outlet property="_nbUniqueUsers" destination="kOA-Uk-VZ4" id="cRc-OH-k3S"/>
                 <outlet property="_searchField" destination="Sza-91-VKC" id="mWw-nE-lMY"/>
                 <outlet property="_uniqueUserTable" destination="a7N-fc-r7V" id="Qzb-Xm-NPa"/>
+            </connections>
+        </customObject>
+        <customObject id="0kn-5G-8lx" userLabel="ModuleAnalyseUserController" customClass="ModuleAnalyseUserController">
+            <connections>
+                <outlet property="_container" destination="bCf-BB-I37" id="fGO-Fa-whz"/>
+                <outlet property="_criterasLabelTF" destination="2CJ-l7-4Tb" id="g3m-xV-0Os"/>
+                <outlet property="_predicateEditor" destination="AEg-Kj-jc5" id="e9g-bb-Nf1"/>
+                <outlet property="_progressLoadingTF" destination="7oU-2i-CU6" id="MLS-0T-rWZ"/>
+                <outlet property="_tableCountTF" destination="zkE-1s-7AW" id="BTS-4G-Ltz"/>
+                <outlet property="_totalUsersTF" destination="qmz-lw-C6W" id="enj-me-wfn"/>
+                <outlet property="_userTable" destination="j4W-mv-9mr" id="Kwz-Pm-vex"/>
             </connections>
         </customObject>
     </objects>

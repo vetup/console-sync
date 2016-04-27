@@ -4,9 +4,7 @@
 @import "../Data/EmailUser.j"
 @import "../Data/LinkedUser.j"
 @import "../Data/UniqueUser.j"
-
-//@global EmaillUser;
-//@global LinkedUser;
+@import "../Data/VetupUser.j"
 
 
 var dataManagerSharedInstance = nil;
@@ -28,6 +26,9 @@ var dataManagerSharedInstance = nil;
     CPMutableArray      _invalidEmailUsers      @accessors(property=invalidEmailUsers);
     CPMutableArray      _uniqueUsers            @accessors(property=uniqueUsers);
     CPMutableArray      _uniqueUsersMap         @accessors(property=uniqueUsersMap);
+
+    CPMutableArray      _vetupUsers             @accessors(property=vetupUsers);
+
 
 
     CPNumber            _nbMergedUser          @accessors(property=nbMergedUser);
@@ -123,6 +124,90 @@ var dataManagerSharedInstance = nil;
 
     return emailUsers;
 }
+
+
+- (void)initVetupUserArray
+{
+    [_vetupUsers removeAllObjects];
+    _vetupUsers = [CPMutableArray new];
+}
+
+/*
+- (CPMutableArray)vetupUsersFromJSArray:(id)vetupUsersFromJSArray
+{
+//    var vetupUsers = [CPMutableArray new];
+
+    var vetupUsers =  _vetupUsers;
+
+    for (var i = 0;  i < [vetupUsersFromJSArray count]; i++)
+    {
+        var vetupUser       = [vetupUsersFromJSArray objectAtIndex:i],
+            vetupUserObj    = [VetupUser new];
+
+        [vetupUserObj setUid:vetupUser.id];
+        [vetupUserObj setEmail:vetupUser.email];
+        [vetupUserObj setFirstname:vetupUser.firstname];
+        [vetupUserObj setLastname:vetupUser.lastname];
+        [vetupUserObj setPassword:vetupUser.password];
+
+        [vetupUsers addObject:vetupUserObj];
+    }
+
+    return vetupUsers;
+}*/
+
+- (void)addVetupUsersFromJSArray:(id)vetupUsersFromJSArray
+{
+//    var vetupUsers = [CPMutableArray new];
+
+    var vetupUsers =  _vetupUsers;
+
+    for (var i = 0;  i < [vetupUsersFromJSArray count]; i++)
+    {
+        var vetupUser       = [vetupUsersFromJSArray objectAtIndex:i],
+            vetupUserObj    = [VetupUser new];
+
+        [vetupUserObj setUid:vetupUser.id];
+//        [vetupUserObj setUserTypeName:vetupUser.userTypeName];
+        [vetupUserObj setUserTypeId:vetupUser.userTypeId];
+        [vetupUserObj setClinicId:vetupUser.clinicId];
+        [vetupUserObj setEmail:vetupUser.email];
+        [vetupUserObj setFirstname:vetupUser.firstname];
+        [vetupUserObj setLastname:vetupUser.lastname];
+        [vetupUserObj setPassword:vetupUser.password];
+
+
+        if (vetupUser.lastUpdate != null)
+            [vetupUserObj setLastUpdate:vetupUser.lastUpdate.date];
+        else
+            [vetupUserObj setLastUpdate:nil];
+
+        [vetupUserObj setVetupGuid:vetupUser.vetupGuid];
+        [vetupUserObj setRegistrationReferrer:vetupUser.registrationReferrer];
+
+
+
+        [vetupUsers addObject:vetupUserObj];
+
+/*
+    CPString    userTypeName            @accessors(property=userTypeName);
+    CPNumber    clinicId                @accessors(property=clinicId);
+    CPString    email                   @accessors(property=email);
+    CPString    firstname               @accessors(property=firstname);
+    CPString    lastname                @accessors(property=lastname);
+    CPString    password                @accessors(property=password);
+    CPString    registrationReferrer    @accessors(property=registrationReferrer);
+    CPString    vetupGuid               @accessors(property=vetupGuid);
+    CPString    lastUpdate              @accessors(property=lastUpdate);
+*/
+
+    }
+
+//    return vetupUsers;
+}
+
+
+
 
 - (CPMutableArray)uniqueUsersFromJSArray:(id)uniqueUsersFromJSArray
 {
