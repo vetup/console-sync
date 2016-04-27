@@ -28,23 +28,6 @@ var C_COLUMN_UID                = "uid",
     C_COLUMN_VETUPGUID_ID       = "vetupGuid",
     C_COLUMN_REGISTRATION_REFERRER_ID = "registrationReferrer";
 
-/*
-    CPString    registrationReferrer    @accessors(property=registrationReferrer);
-    CPString    vetupGuid               @accessors(property=vetupGuid);
-    CPString    lastUpdate              @accessors(property=lastUpdate);
-*/
-
-/*
-    CPNumber    uid                     @accessors(property=uid);
-    CPNumber    userTypeId              @accessors(property=userTypeId);
-    CPNumber    clinicId                @accessors(property=clinicId);
-    CPString    email                   @accessors(property=email);
-    CPString    firstname               @accessors(property=firstname);
-    CPString    lastname                @accessors(property=lastname);
-*/
-
-//SELECT * FROM vetup_user where vetup_user.clinicId NOT IN (SELECT id from vetup_clinic)
-
 
 @implementation ModuleAnalyseUserController : CPObject
 {
@@ -154,26 +137,6 @@ var C_COLUMN_UID                = "uid",
     var registrationReferrerSortDescriptor = [CPSortDescriptor sortDescriptorWithKey:"registrationReferrer" ascending:YES];
     [registrationReferrerTableColumn setSortDescriptorPrototype:registrationReferrerSortDescriptor];
 
-
-//    var passwordSortDescriptor = [CPSortDescriptor sortDescriptorWithKey:"password" ascending:YES];
-//    [passwordTableColumn setSortDescriptorPrototype:passwordSortDescriptor];
-
-
-/*
-    var passwordTableColumn = [_userTable tableColumnWithIdentifier:C_COLUMN_PASSWORD_ID];
-    [passwordTableColumn setEditable:NO];
-
-    var creationDateTableColumn = [_userTable tableColumnWithIdentifier:C_COLUMN_CREATION_DATE_ID];
-    [creationDateTableColumn setEditable:NO];
-*/
-/*
-var C_COLUMN_UID                = "uid",
-    C_COLUMN_USER_TYPE_ID       = "userType",
-    C_COLUMN_CLINIC_ID          = "clinicId",
-    C_COLUMN_EMAIL_ID           = "email",
-    C_COLUMN_FIRSTNAME_ID       = "firstname",
-    C_COLUMN_LASTNAME_ID        = "lastname",
-*/
     [_predicateEditor setDelegate:self];
     [_predicateEditor setBackgroundColor:[CPColor whiteColor]];
     [_predicateEditor setCanRemoveAllRows:YES];
@@ -186,7 +149,6 @@ var C_COLUMN_UID                = "uid",
 
 
     //observe les changements de la propriété bindedPredicateEditorValue bindée sur le objectValue du CPPredicateEditor
-//    [self addObserver:self forKeyPath:@"bindedPredicateEditorValue" options:CPKeyValueObservingOptionOld | CPKeyValueObservingOptionNew context:nil];
     [self addObserver:self forKeyPath:@"bindedPredicateEditorValue" options:CPKeyValueObservingOptionNew context:nil];
 
     [[CPNotificationCenter defaultCenter] addObserver:self selector:@selector(_getVetupUsersNotification:)  name:WSGetVetupUsersNotification   object:nil];
@@ -201,123 +163,6 @@ var C_COLUMN_UID                = "uid",
 
     [_tableCountTF setEditable:NO];
     [_tableCountTF setStringValue:@"0"];
-
-
-/*
-1
-[self addObserver:self forKeyPath:@"self.sliderValue" options:NSKeyValueObservingOptionNew context:nil];
-And implement observeValueForKeyPath:ofObject:change:context:
-?
-1
-2
-3
-4
-5
--(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-{
-    NSInteger newVal = (NSInteger)[change objectForKey:NSKeyValueChangeNewKey];
-    NSLog(@"changed %ld", newVal);
-}
-*/
-
-
-/*
-    //sorting
-    var idSortDescriptor = [CPSortDescriptor sortDescriptorWithKey:"uid" ascending:YES];
-    [idTableColumn setSortDescriptorPrototype:idSortDescriptor];
-
-    var emailSortDescriptor = [CPSortDescriptor sortDescriptorWithKey:"email" ascending:YES];
-    [emailTableColumn setSortDescriptorPrototype:emailSortDescriptor];
-
-    var nbLinkedUsersSortDescriptor = [CPSortDescriptor sortDescriptorWithKey:"nbLinkedUsers" ascending:YES];
-    [nbLinkedUsersTableColumn setSortDescriptorPrototype:nbLinkedUsersSortDescriptor];
-
-    var passwordSortDescriptor = [CPSortDescriptor sortDescriptorWithKey:"password" ascending:YES];
-    [passwordTableColumn setSortDescriptorPrototype:passwordSortDescriptor];
-
-    var creationDateSortDescriptor = [CPSortDescriptor sortDescriptorWithKey:"creationDate" ascending:YES];
-    [creationDateTableColumn setSortDescriptorPrototype:creationDateSortDescriptor];
-
-
-    [[CPNotificationCenter defaultCenter] addObserver:self selector:@selector(_getCRVUniqueUsersNotification:)          name:WSGetCRVUniqueUsersNotification     object:nil];
-    [[CPNotificationCenter defaultCenter] addObserver:self selector:@selector(_getCRVUsersNotification:)                name:WSGetCRVUsersNotification           object:nil];
-    [[CPNotificationCenter defaultCenter] addObserver:self selector:@selector(_mergeUsersNotification:)                 name:WSMergeCRVUsersNotification           object:nil];
-*/
-
-
-
-
-
-
-
-/*
-    //Init search field
-
-    [_searchField setRecentsAutosaveName:"autosave"];
-    [_searchField setTarget:self];
-    [_searchField setAction:@selector(_updateFilter:)];
-
-
-    //ajout du menu de recherche au searchfield
-
-    _searchMenuTemplate = [_searchField defaultSearchMenuTemplate];
-
-    _menuItemPrefix = @"   ";
-    _searchCriteriaIndex = 0;
-    _searchCriteriaIndexes = [CPArray arrayWithArray:[1, 2, 3, 4]];
-    _criteriasKeyPath  = ["email", "firstname", "lastname", "uid"];
-
-    [_searchMenuTemplate insertItemWithTitle:@"Rechercher par"
-                                     action:nil
-                              keyEquivalent:@""
-                                    atIndex:0];
-
-
-    var item = [[CPMenuItem alloc] initWithTitle:_menuItemPrefix + @"Email"
-                                          action:@selector(_changeSearchCriteria:)
-                                   keyEquivalent:@""];
-
-    [item setTarget:self];
-    [item setTag:1];
-    [item setState:CPOffState];
-    [_searchMenuTemplate insertItem:item atIndex:1];
-
-
-    item = [[CPMenuItem alloc] initWithTitle:_menuItemPrefix + @"Prénom"
-                                          action:@selector(_changeSearchCriteria:)
-                                   keyEquivalent:@""];
-
-    [item setTarget:self];
-    [item setTag:2];
-//    [item setState:CPOffState];
-    [item setState:CPOnState];
-    [_searchMenuTemplate insertItem:item atIndex:2];
-
-    item = [[CPMenuItem alloc] initWithTitle:_menuItemPrefix + @"Nom"
-                                      action:@selector(_changeSearchCriteria:)
-                                keyEquivalent:@""];
-    [item setTarget:self];
-    [item setTag:3];
-    [item setState:CPOffState];
-    [_searchMenuTemplate insertItem:item atIndex:3];
-
-    item = [[CPMenuItem alloc] initWithTitle:_menuItemPrefix + @"Id"
-                                      action:@selector(_changeSearchCriteria:)
-                                keyEquivalent:@""];
-    [item setTarget:self];
-    [item setTag:4];
-    [item setState:CPOffState];
-    [_searchMenuTemplate insertItem:item atIndex:4];
-
-
-    [_searchField setSearchMenuTemplate:_searchMenuTemplate];
-
-
-    [self _changeSearchCriteria:[[_searchField menu] itemAtIndex:1]];
-    [self _updateFilter:_searchField];
-
-    [_searchField setDelegate:self];
-    */
 
     CPLog.debug(@"<<<< Leaving ModuleAnalyseUserController::awakeFromCib");
 }
@@ -342,22 +187,6 @@ And implement observeValueForKeyPath:ofObject:change:context:
 
     [[AppController appDelegate] startProgressWithText:@"Chargement des vetup users en cours, veuillez patienter..."];
     [[RequestManager sharedManager] performGetVetupUsers:_pageSize currentPage:1];
-
-
-/*
-    [[RequestManager sharedManager] performGetVetupUsers:10000 currentPage:1];
-    [[RequestManager sharedManager] performGetVetupUsers:10000 currentPage:2];
-    [[RequestManager sharedManager] performGetVetupUsers:10000 currentPage:3];
-    [[RequestManager sharedManager] performGetVetupUsers:10000 currentPage:4];
-    [[RequestManager sharedManager] performGetVetupUsers:10000 currentPage:5];
-    [[RequestManager sharedManager] performGetVetupUsers:10000 currentPage:6];
-    [[RequestManager sharedManager] performGetVetupUsers:10000 currentPage:7];
-    [[RequestManager sharedManager] performGetVetupUsers:10000 currentPage:8];
-    [[RequestManager sharedManager] performGetVetupUsers:10000 currentPage:9];
-    [[RequestManager sharedManager] performGetVetupUsers:10000 currentPage:10];
-    [[RequestManager sharedManager] performGetVetupUsers:10000 currentPage:11];
-    */
-
 }
 
 
@@ -388,15 +217,8 @@ And implement observeValueForKeyPath:ofObject:change:context:
 {
     if ([aKeyPath isEqualToString:@"bindedPredicateEditorValue"])
     {
-//        CPLog.debug("---- observeValueForKeyPath: %@   editor value: %@", aKeyPath, [_predicateEditor objectValue]);
         var filterDescription = [bindedPredicateEditorValue description];
         [_criterasLabelTF setStringValue:filterDescription];
-
-/*
-        var filteredArray = [_users filteredArrayUsingPredicate:bindedPredicateEditorValue];
-        _users = filteredArray;
-        [self refresh]
-        */
 
         [self _refreshTableFromPredicate];
     }
@@ -425,13 +247,6 @@ And implement observeValueForKeyPath:ofObject:change:context:
 {
     [self refreshDataFromServer];
 }
-
-/*
-- (IBAction)predicateEditorAction:(id)sender
-{
-    CPLog.debug(@" ---predicateEditorAction");
-}
-*/
 
 - (IBAction)testMultiselection:(id)aSender
 {
@@ -506,78 +321,6 @@ And implement observeValueForKeyPath:ofObject:change:context:
 }
 
 
-/*
-
-- (void)_uniqueUserSelectionChanged
-{
-    var row = [_userTable selectedRow];
-
-    if (row >= 0)
-    {
-        var selectedUniqueUser  = [_uniqueUsers objectAtIndex:row];
-        _linkedUsers = [selectedUniqueUser linkedUsers];
-        [self refreshLinkedUsers];
-    }
-}
-
-
-- (void)_changeSearchCriteria:(CPMenuItem)menuItem
-{
-    _searchCriteriaIndex = [menuItem tag] - 1;
-
-    [_searchField setPlaceholderString:[[menuItem title] substringFromIndex:[_menuItemPrefix length]]];
-
-    [self _updateSearchMenuTemplate];
-}
-
-- (void)_updateSearchMenuTemplate
-{
-    for (var i = 0; i < _searchCriteriaIndexes.length; i++)
-        [[_searchMenuTemplate itemAtIndex:_searchCriteriaIndexes[i]] setState:CPOffState];
-
-
-    var selectedCriteriaIndex = _searchCriteriaIndexes[_searchCriteriaIndex],
-        menuItem = [_searchMenuTemplate itemAtIndex:selectedCriteriaIndex];
-
-    [menuItem setState:CPOnState];
-
-    [_searchField setSearchMenuTemplate:_searchMenuTemplate];
-
-    //on relance la recherche
-    [self _updateFilter:_searchField];
-}
-
-- (void)_updateFilter:(id)sender
-{
-//    CPLog.debug(@">>>> Entering ModuleUniqueUserController::_updateFilter");
-
-    var  uniqueUsers    = [[DataManager sharedManager] uniqueUsers],
-         result         = uniqueUsers,
-         searchString   = [sender stringValue],
-         keyPath        = _criteriasKeyPath[_searchCriteriaIndex];
-
-    if (![searchString isEqualToString:@""])
-    {
-        var predicate = nil;
-        if ([keyPath isEqualToString:@"uid"])
-        {
-            var uid = [searchString intValue];
-            predicate = [CPPredicate predicateWithFormat:@"%K = %d", keyPath, uid];
-        }
-        else
-        {
-            predicate = [CPPredicate predicateWithFormat:@"%K CONTAINS[cd] %@", keyPath, searchString];
-        }
-
-        result = [uniqueUsers filteredArrayUsingPredicate:predicate];
-    }
-
-    _uniqueUsers    = result;
-
-    [_nbUniqueUsers setStringValue:[_uniqueUsers count]];
-    [_uniqueUserTable reloadData];
-}
-*/
 
 #pragma mark -
 #pragma mark Delegate CPSearchField
@@ -602,21 +345,6 @@ And implement observeValueForKeyPath:ofObject:change:context:
     result = [_users count];
 
     return result;
-}
-
-/*! TableView delegate
-*/
-- (void)tableViewSelectionDidChange:(CPNotification)aNotification
-{
-//    CPLog.debug("TABLEVIEW: : tableViewSelectionDidChange aNotification: %@", );
-
-/*
-    var tableView = [aNotification object];
-    if (_uniqueUserTable == tableView)
-    {
-        [self _uniqueUserSelectionChanged];
-    }
-    */
 }
 
 
