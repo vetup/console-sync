@@ -109,47 +109,15 @@
 }
 
 
-- (CPString) _paramStringFromDic:(CPDictionary)dic
+- (CPString)_paramStringFromDic:(CPDictionary)dic
 {
-    var getParametersString = @"";
+    var getParametersString = @"",
+        allKeys = [dic allKeys];
 
-/*
-    for(var aKey in [dic allKeys])
+    for (var i = 0; i <  [allKeys count]; i++)
     {
-//        var encodedStr = [[dic valueForKey:aKey] stringByAddingPercentEscapesUsingEncoding:UTF8StringEncoding];
-        var encodedStr = [[dic valueForKey:aKey] stringByAddingPercentEscapesUsingEncoding:@"tt"];
-
-        CPLog.info(@"!!!!!!!!!!!!!!!! PHILOU_paramStringFromDic %@",[dic valueForKey:aKey]  );
-
-        getParametersString = [getParametersString stringByAppendingString:[CPString stringWithFormat:@"&%@=%@", aKey, encodedStr]];
-    }
-*/
-    var allKeys = [dic allKeys];
-
-    for (var i=0; i <  [allKeys count]; i++)
-    {
-        var aKey = [allKeys objectAtIndex:i];
-
-        //marche pas ça..., mais pas besoin on dirait
-        //        var encodedStr = [[dic valueForKey:aKey] stringByAddingPercentEscapesUsingEncoding:@"tt"];
-
-/*
-Voir ce code au cas ou pour escaping, venant de LPKit/LPURLPostRequest.j
-
-- (void)setContent:(id)anObject escape:(BOOL)shouldEscape
-{
-    var content = @"";
-
-    for (key in anObject)
-        content = [content stringByAppendingString:[CPString stringWithFormat:@"%s=%s&", key, shouldEscape ? encodeURIComponent(anObject[key]) : anObject[key]]];
-
-    // Remove trailing &
-    content = [content substringToIndex:[content length] - 1];
-
-    [self setHTTPBody:content];
-*/
-
-        var encodedStr = [dic valueForKey:aKey];
+        var aKey = [allKeys objectAtIndex:i],
+            encodedStr = [dic valueForKey:aKey];
 
         getParametersString = [getParametersString stringByAppendingString:[CPString stringWithFormat:@"&%@=%@", aKey, encodedStr]];
     }
@@ -178,14 +146,21 @@ Voir ce code au cas ou pour escaping, venant de LPKit/LPURLPostRequest.j
 
 #pragma mark -
 #pragma mark CPURLConnecion
--(void)connection:(CPURLConnection)connection didFailWithError:(id)error
+- (void)connection:(CPURLConnection)connection didFailWithError:(id)aError
 {
-    // This will be newer called during normal operation, even if server is not responded.
+    // appelé quand j'ai un timout côté serveur
+//     CPLog.error(@"PHIL3 CONNECTION failed");
+    _error = [[ErrorManager sharedManager] errorWithCodeAndDomain:WSInternetError domain:WSInternetErrorDomain];
 
-     CPLog.error(@"PHIL3 CONNECTION failed");
+    var desc = [CPString stringWithFormat:@"name: %@  message: %@", aError.name, aError.message];
+    [_error setDesc:desc];
+
+    CPLog.error(@"EDRequest:: didFailWithError %@", aError);
+
+    [_delegate EDRequest_finished:self];
 }
 
--(void)connection:(CPURLConnection)connection didReceiveResponse:(CPHTTPURLResponse)response
+- (void)connection:(CPURLConnection)connection didReceiveResponse:(CPHTTPURLResponse)response
 {
     _responsesCount = _responsesCount + 1;
     _accumulatedResponseString = [[CPString alloc] initWithString:@""];
@@ -235,7 +210,10 @@ Voir ce code au cas ou pour escaping, venant de LPKit/LPURLPostRequest.j
         }
         catch(e)
         {
-            CPLog.debug(@"---- EDRequest connectionDidFinishLoading EXCEPTION: %@", e);
+            _error = [[ErrorManager sharedManager] errorWithCodeAndDomain:WSInternetError domain:WSInternetErrorDomain];
+            [_error setDesc:e.message];
+            CPLog.error(@"---- EDRequest connectionDidFinishLoading EXCEPTION: %@", e);
+            [_delegate EDRequest_finished:self];
         }
 
     }
@@ -249,9 +227,8 @@ Voir ce code au cas ou pour escaping, venant de LPKit/LPURLPostRequest.j
     [_urlConnection cancel];
     if (_delegate)
     {
-         CPLog.debug(@"---- ENTERING  EDRequest timerTimeoutWaitingResponseTick");
-
-        self.error = [[ErrorManager sharedManager] errorWithCodeAndDomain:WSInternetError domain:WSInternetErrorDomain];
+        CPLog.debug(@"---- ENTERING  EDRequest timerTimeoutWaitingResponseTick");
+        _error = [[ErrorManager sharedManager] errorWithCodeAndDomain:WSInternetError domain:WSInternetErrorDomain];
         //objj_msgSend(_delegate, @selector(EDRequest_finished:), self, nil);
         [_delegate EDRequest_finished:self];
     }

@@ -50,7 +50,8 @@ WSDeleteCRVUserWithInvalidClinicIdFunction   = @"deleteCRVUserWithInvalidClinicI
     [super parseJSONResponse:iResult];
 
 
-    if (WSNoError == self.error.code)
+//    if (WSNoError == self.error.code)
+    if (nil == _error)
     {
         var data = iResult.data;
 

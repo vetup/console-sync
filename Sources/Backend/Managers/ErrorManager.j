@@ -43,119 +43,53 @@ var errorManagerSharedInstance = nil;
 {
 
     var alertMessage = @"WS Error";
-    var alertInformative =  [CPString stringWithFormat:@"Problème lors de la communication avec le serveur: \n%@",iError.code];
+    var alertInformative = [CPString stringWithFormat:@"Problème lors de la communication avec le serveur: \ncode: %@  desc: %@", [iError code], [iError desc]];
+//    var alertInformative = @"test TOTO";
 
+//    var alert = [CPAlert new];
     var alert = [[CPAlert alloc] init];
-//                [alert setDelegate:self];
-    [alert setDelegate:nil];
     [alert setAlertStyle:CPCriticalAlertStyle];
     [alert addButtonWithTitle:@"Ok"];
-//                [alert addButtonWithTitle:@"Report..."];
     [alert setMessageText:alertMessage];
     [alert setInformativeText:alertInformative];
-    [alert runModal];
 
-//TODO: la méthode ios qui suit !, localization des messages d'erreurs
+//    [alert beginSheetModalForWindow:[[CPApplication sharedApplication] mainWindow]];
 
-    /*
-    NSString *message = nil;
-
-    if([[error domain] isEqual:NSURLErrorDomain] && [error code] == kNLNoInternetError)
-    {
-        [self _displayErrorMessage:NSLocalizedString(@"GLOBAL_SERVER_UNREACHABLE",@"")];
-
-        return;
-    }
-    else if([[error domain] isEqual:NSURLErrorDomain] && [error code] == kNLNoConnexionToHostError)
-    {
-        [self _displayErrorMessage:NSLocalizedString(@"GLOBAL_HOST_NO_CONNEXION",@"")];
-        return;
-    }
-    else if ([[error domain] isEqual:NSURLErrorDomain] && [error code] == kNLConnexionTimeoutHostError)
-    {
-        [self _displayErrorMessage:NSLocalizedString(@"GLOBAL_HOST_NO_CONNEXION",@"")];
-        return;
-    }
-    //PF: 8/06/2012 - une erreur NSURLErrorDomain pas identifiée, on affiche erreur de connexion
-    else if ([[error domain] isEqual:NSURLErrorDomain])
-    {
-        [self _displayErrorMessage:NSLocalizedString(@"GLOBAL_SERVER_UNREACHABLE",@"")];
-        return;
-    }
-    else if ([[error domain] isEqual:WSGmailErrorDomain])
-    {
-        [self _displayErrorMessage:@"XML format error"];
-        return;
-    }
-    else //stocke le message pour être utilisé en DEBUG_MODE
-    {
-        message =   [NSString stringWithFormat:@"desc: %@  domain: %@  code: %d",
-                     [error localizedDescription],
-                     [error domain],
-                     [error code]];
-    }
-
-//PF VCC
-    if([[error domain] isEqual:WSVetupErrorDomain] && [error code] == WS_UNKNOWN_ERROR)
-    {
-        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:nil message:message delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
-        [alert release];
-
-        _isErrorBeingDisplayed = true;
-
-    }
-
-
-
-
-    NSLog(@"ErrorManager: %@", message);
-
-#if DEBUG_MODE
-    if (error)
-    {
-        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:nil message:message delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
-        [alert release];
-    }
-#endif
-
-    */
-
-}
-
-
-
-/*- (BOOL)windowShouldClose:(id)window
-{
-    var confirmBox = [[CPAlert alloc] init];
-    [confirmBox setTitle:nil];
-    [confirmBox setAlertStyle:CPInformationalAlertStyle];
-    [confirmBox setMessageText:[[TNLocalizationCenter defaultCenter] localize:@"Do you want to discard the changes in the email?"]];
-    [confirmBox setInformativeText:[[TNLocalizationCenter defaultCenter] localize:@"Your changes will be lost if you discard them."]];
-    [confirmBox addButtonWithTitle:[[TNLocalizationCenter defaultCenter] localize:@"Save as draft"]];
-    [confirmBox addButtonWithTitle:[[TNLocalizationCenter defaultCenter] localize:@"Discard"]];
-    [confirmBox addButtonWithTitle:[[TNLocalizationCenter defaultCenter] localize:@"Cancel"]];
-    [confirmBox beginSheetModalForWindow:theWindow modalDelegate:self didEndSelector:@selector(confirmEnd:returnCode:) contextInfo:nil];
-
-    return NO;
-}
-
-- (void)confirmEnd:(CPAlert)confirm returnCode:(int)returnCode
-{
-    CPLog.trace(@"confirmEnd - returnCode = %d", returnCode);
-    switch (returnCode)
-    {
-    case CPAlertDiscard:
-        [CPApp stopModal];
-        [theWindow close];
-        break;
-    case CPAlertSaveAsDraft:
-        [self saveAsDraftButtonClickedAction:nil];
-        break;
-    }
-}
+/*
+    var test = [[CPApplication sharedApplication] mainWindow];
+    var theWindow =  [[AppController appDelegate] testTheWindow]
+    var test2 = [CPApp keyWindow];
+    [[alert window] setPlatformWindow:[theWindow platformWindow]];
+    test = [[CPApplication sharedApplication] mainWindow];
 */
+
+    [alert runModalWithDidEndBlock:function(alert, returnCode)
+    {
+       // CPLog.info("didEndBlock: alert = %s, code = %d", [alert description], returnCode);
+    }];
+
+/*
+    if (![CPApp keyWindow])
+    {
+        [alert _createWindowWithStyle:_CPModalWindowMask];
+      //  [[alert window] setPlatformWindow:[theWindow platformWindow]];
+    }
+*/
+
+    //[alert beginSheetModalForWindow:test1];
+
+
+//https://groups.google.com/forum/#!searchin/objectivej/CPAlert/objectivej/0qxSrSwwE-0/Qu2xofKmCQAJ
+/*
+    [alert runModalWithDidEndBlock:function(alert, returnCode)
+    {
+       // CPLog.info("didEndBlock: alert = %s, code = %d", [alert description], returnCode);
+       var test = 4;
+       test = 5;
+    }];*/
+}
+
+
 //garanti d'afficher une seule popup d'erreur
 - (void) displayErrorMessage:(CPString)iMsg
 {
@@ -168,10 +102,6 @@ var errorManagerSharedInstance = nil;
         [alert addButtonWithTitle:@"Ok"];
         [alert setMessageText:alertMessage];
         [alert setInformativeText:iMsg];
-
-   //pas de runModal si on veut pouvoir utiliser le end selector
-  //      [alert beginSheetModalForWindow:[CPApp mainWindow] modalDelegate:self didEndSelector:@selector(confirmEnd:returnCode:) contextInfo:nil];
-   //     [alert runModal];
 
         //PF: j'utilise runModalWithDidEndBlock au lieu de beginSheetModalForWindow car sinon j'ai des crash avec les sheets dans des sheets...
         [alert runModalWithDidEndBlock:function(alert, returnCode)
@@ -189,21 +119,6 @@ var errorManagerSharedInstance = nil;
 {
     CPLog.debug(@"confirmEnd - returnCode = %d", returnCode);
     _isErrorBeingDisplayed = false;
-
-
-
-    /*
-        CPLog.trace(@"confirmEnd - returnCode = %d", returnCode);
-    switch (returnCode)
-    {
-    case CPAlertDiscard:
-        [CPApp stopModal];
-        [theWindow close];
-        break;
-    case CPAlertSaveAsDraft:
-        [self saveAsDraftButtonClickedAction:nil];
-        break;
-    */
 }
 
 - (void)alertView:(CPAlert)alertView clickedButtonAtIndex:(int)buttonIndex
@@ -243,8 +158,9 @@ var errorManagerSharedInstance = nil;
 - (WSError)errorWithCodeAndDomain:(CPString)iCode domain:(CPString)iDomain
 {
     var error = [[WSError alloc] init];
-    error.domain = iDomain;
-    error.code = iCode;
+
+    [error setCode:iCode];
+    [error setDomain:iDomain];
 
     return error;
 }

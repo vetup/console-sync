@@ -74,32 +74,25 @@
     try
     {
         //Si l'erreur n'est pas vetup, on l'affiche ici, c'est que c'est grave:)
-        if (![self.error.domain isEqual:WSVetupErrorDomain])
+        if ((_error != nil) && ![[_error domain] isEqual:WSVetupErrorDomain])
         {
-            [[ErrorManager sharedManager] presentError:self.error];
+            [[ErrorManager sharedManager] presentError:_error];
         }
-
         var userInfo = [[CPMutableDictionary alloc] init];
 
-        if (WSNoError != self.error.code)
+        if ((_error != nil) && (![[error code] isEqualToString:WSNoError]))
         {
-            [userInfo setObject:self.error forKey:ServicesErrorKey];
+            [userInfo setObject:_error forKey:ServicesErrorKey];
         }
         [userInfo setObject:self forKey:ServicesJobKey];
 
+        [[CPNotificationCenter defaultCenter] postNotificationName:_serviceNotification object:self userInfo:userInfo];
     }
     catch (e)
     {
-        CPLog.error("weird error here " + e);
+        CPLog.error("WSRequestJob::jobTerminated: " + e);
     }
 
-
-    //var notification = [CPNotification notificationWithName:_serviceNotification object:self userInfo:userInfo];
-    //[[CPNotificationQueue defaultQueue] enqueueNotification:notification postingStyle:CPPostASAP];
-
-    [[CPNotificationCenter defaultCenter] postNotificationName:_serviceNotification object:self userInfo:userInfo];
-
- //   CPLog.info(@"<<< Leaving WSRequestJob::jobTerminated >>>");
 }
 
 // MARK: VSRequest Delegate
@@ -113,7 +106,7 @@
 
     self.requestPerformed = YES;
 
-    self.error = request.error;
+    _error = [request error];
 
     [self jobTerminated];
 

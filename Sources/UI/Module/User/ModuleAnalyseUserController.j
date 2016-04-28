@@ -34,11 +34,15 @@ var C_COLUMN_UID                = "uid",
     @outlet CPView              _container;
     @outlet CPTableView         _userTable;
     @outlet CPPredicateEditor   _predicateEditor;
+    @outlet CPButton            _loadingButton;
 
     @outlet CPTextField _progressLoadingTF;
     @outlet CPTextField _totalUsersTF;
     @outlet CPTextField _criterasLabelTF;
     @outlet CPTextField _tableCountTF;
+    @outlet CPTextField _actionTF;
+
+    @outlet LPMultiLineTextField     _analyseTF;
 
     //Data
     CPMutableArray          _users;
@@ -152,6 +156,8 @@ var C_COLUMN_UID                = "uid",
     [self addObserver:self forKeyPath:@"bindedPredicateEditorValue" options:CPKeyValueObservingOptionNew context:nil];
 
     [[CPNotificationCenter defaultCenter] addObserver:self selector:@selector(_getVetupUsersNotification:)  name:WSGetVetupUsersNotification   object:nil];
+    [[CPNotificationCenter defaultCenter] addObserver:self selector:@selector(_infoVetupUsersNotification:)  name:WSInfoVetupUserNotification   object:nil];
+
 
     //10000 user par requête
     _pageSize = 10000;
@@ -163,6 +169,7 @@ var C_COLUMN_UID                = "uid",
 
     [_tableCountTF setEditable:NO];
     [_tableCountTF setStringValue:@"0"];
+    [_actionTF setStringValue:@""];
 
     CPLog.debug(@"<<<< Leaving ModuleAnalyseUserController::awakeFromCib");
 }
@@ -178,6 +185,8 @@ var C_COLUMN_UID                = "uid",
     [self _displayProgress:0];
     [self _updateNbLoadedUser:0];
 
+
+    [_loadingButton setTitle:@"Loading..."];
 
     //On vide le tableau des users
     [[DataManager sharedManager] initVetupUserArray];
@@ -243,42 +252,51 @@ var C_COLUMN_UID                = "uid",
 #pragma mark -
 #pragma mark IB Action
 
+- (IBAction)clear:(id)aSender
+{
+    [_analyseTF setStringValue:@""];
+}
+
+
 - (IBAction)refreshDataFromServerAction:(id)aSender
 {
     [self refreshDataFromServer];
 }
 
-- (IBAction)testMultiselection:(id)aSender
+- (IBAction)getInfoAction:(id)aSender
 {
-    CPLog.debug(@" ---testMultiselection");
+//    CPLog.debug(@" ---testMultiselection");
 
-    var indexes     = [_userTable selectedRowIndexes],
-    objects     = [_users objectsAtIndexes:indexes];
+    var indexes = [_userTable selectedRowIndexes],
+        objects = [_users objectsAtIndexes:indexes];
 
 
 
     if ([objects count] > 0)
     {
-        var users = [CPArray new];
+        var ids = [CPArray new];
 
         for (var i = 0; i < [objects count]; i++)
         {
-            var user    = [objects objectAtIndex:i];
-            [users addObject:[user email]];
+            var user = [objects objectAtIndex:i],
+            //var idStr = [CPString stringWithFormat:"%d", [user uid]];
+                idStr = [[user uid] stringValue];
+            [ids addObject:idStr];
 
-            CPLog.debug(@" ----- testMultiselection: %@", [user email]);
+           // CPLog.debug(@" ----- testMultiselection: %@", [user email]);
         }
 
-/*
-        [[AppController appDelegate] startProgressWithText:@"Suppression des utilisateurs CRV..."];
-        [[AppController appDelegate] startProgress];
 
-        [[RequestManager sharedManager] performDeleteCRVUsers:emails];
-*/
+        [[AppController appDelegate] startProgressWithText:@"obtention des infos vetup_users..."];
+//        [[AppController appDelegate] startProgress];
+
+        [_actionTF setStringValue:@"Fetching data..."];
+
+        [[RequestManager sharedManager] performInfoVetupUsers:ids];
     }
     else
     {
-        [[ErrorManager sharedManager] displayErrorMessage:@"Vous devez sélectionner les utilisateurs à supprimer"];
+        [[ErrorManager sharedManager] displayErrorMessage:@"Vous devez sélectionner les utilisateurs dans la table"];
     }
 }
 
@@ -436,6 +454,36 @@ var C_COLUMN_UID                = "uid",
 #pragma mark WS Notification
 
 
+- (void)_infoVetupUsersNotification:(CPNotification)notification;
+{
+    CPLog.debug(@"_infoVetupUsersNotification");
+
+    var userInfo = [notification userInfo],
+        error    = [userInfo objectForKey:ServicesErrorKey];
+
+    [[AppController appDelegate] stopProgress];
+
+    [_actionTF setStringValue:@""];
+    [[AppController appDelegate] stopProgressWithText:@""];
+
+    if (nil == error)
+    {
+        var job = [userInfo objectForKey:ServicesJobKey],
+            request = [job request],
+            info = [request info];
+
+        var textContact = [CPString stringWithFormat:@"%@\n%@", [_analyseTF stringValue], info];
+        [_analyseTF setStringValue:textContact];
+    }
+    else
+    {
+        var errorMsg = @"L'obtention des infos des vetup users a échoué";
+        [[AppController appDelegate] stopProgressWithText:errorMsg];
+        [[ErrorManager sharedManager] displayErrorMessage:errorMsg];
+    }
+}
+
+
 - (void)_getVetupUsersNotification:(CPNotification)notification;
 {
     CPLog.debug(@"_getVetupUsersNotification");
@@ -446,6 +494,8 @@ var C_COLUMN_UID                = "uid",
         error    = [userInfo objectForKey:ServicesErrorKey];
 
     [[AppController appDelegate] stopProgress];
+
+    CPLog.debug(@"_getVetupUsersNotification error: %@", error);
 
     if (nil == error)
     {
@@ -471,6 +521,7 @@ var C_COLUMN_UID                = "uid",
         else
         {
             [[AppController appDelegate] stopProgressWithText:@""];
+            [_loadingButton setTitle:@"Load Vetup Users"];
         }
 
         var percent = ROUND((currentPage * 100) / _totalPages);
@@ -482,8 +533,11 @@ var C_COLUMN_UID                = "uid",
     else
     {
         [[AppController appDelegate] stopProgressWithText:@"Le chargement des vetup users a échoué"];
-        var errorMsg = @"Le chargement des vetup users a échoué";
+
+        var errorMsg = [CPString stringWithFormat:@"Le chargement des vetup users a échoué\n%@", error.desc];
         [[ErrorManager sharedManager] displayErrorMessage:errorMsg];
+
+        [_loadingButton setTitle:@"Load Vetup Users"];
     }
 }
 

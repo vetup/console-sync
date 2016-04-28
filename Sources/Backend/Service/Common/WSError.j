@@ -7,7 +7,7 @@ J'ai créé un objet pour matcher la gestion sous iOS mais j'utilise vraiment qu
 
 
 WSVetupErrorDomain 		= @"VetupWebServicesErrorDomain";
-WSInternetErrorDomain 	= @"InternetErrorDomain"; //POur ce qui n'est pas du domaine de Vetup, a voir...
+WSInternetErrorDomain 	= @"InternetErrorDomain"; //Pour ce qui n'est pas du domaine de Vetup, a voir...
 
 @implementation WSError : CPObject
 {
@@ -25,6 +25,9 @@ WSInternetErrorDomain 	= @"InternetErrorDomain"; //POur ce qui n'est pas du doma
 {
     if ( self = [super init] )
     {
+        _code   = @"";
+        _domain = @"";
+        _desc   = @"";
     }
     return self;
 }

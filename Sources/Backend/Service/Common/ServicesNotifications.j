@@ -42,8 +42,10 @@ WSDeleteCRVUsersNotification                    = @"WSDeleteCRVUsersNotification
 WSDeleteCRVUserWithInvalidClinicIdNotification  = @"WSDeleteCRVUserWithInvalidClinicIdNotification";
 WSMergeCRVUsersNotification                     = @"WSMergeCRVUsersNotification";
 WSGetCRVUniqueUsersNotification                 = @"WSGetCRVUniqueUsersNotification";
-WSGetVetupUsersNotification                     = @"WSGetVetupUsersNotification";
 
+WSGetVetupUsersNotification                     = @"WSGetVetupUsersNotification";
+WSInfoVetupUserNotification                     = @"WSInfoVetupUserNotification";
+WSDeleteVetupUserNotification                   = @"WSDeleteVetupUserNotification";
 
 
 //fonction Admin

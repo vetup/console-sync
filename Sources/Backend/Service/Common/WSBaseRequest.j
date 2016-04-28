@@ -127,15 +127,24 @@ Appelé par EDRequest lors d'un retour serveur, permet d'alimenter correctement 
     var code = iResult.code;
 
 //pas d'affichage ici toute façon, trop tôt, on créée le champ error correctement
-    self.error = [self _errorWithCode:code];
+
+    var error = [self _errorWithCode:code];
+
+    [self setError:error];
 
     CPLog.info(@"<<<< Leaving WSBaseRequest::parseJSONResponse");
 }
 
 - (WSError)_errorWithCode:(CPString)code
 {
-    var error = [[ErrorManager sharedManager] errorWithCodeAndDomain:code domain:WSVetupErrorDomain];
-    return error;
+    var result = nil;
+
+    if (![code isEqualToString:WSNoError])
+    {
+        result = [[ErrorManager sharedManager] errorWithCodeAndDomain:code domain:WSVetupErrorDomain];
+    }
+
+    return result;
 }
 
 - (void)_showaAlert:(CPString)iMsg

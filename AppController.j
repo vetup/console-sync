@@ -174,6 +174,12 @@ var VetupAuthenticationKey = @"Vetup Authentication";
         [_requestInProgressView hide];
 }
 
+
+- (id)testTheWindow
+{
+    return theWindow;
+}
+
 /*
 - (void)startProgressWithText:(CPString)text
 {

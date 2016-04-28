@@ -19,6 +19,7 @@
 @import "../Service/Jobs/WSMergeCRVUsersJob.j"
 @import "../Service/Jobs/WSGetCRVUniqueUsersJob.j"
 @import "../Service/Jobs/WSGetVetupUsersJob.j"
+@import "../Service/Jobs/WSInfoVetupUsersJob.j"
 
 @import "../Service/JobsManagement/JobQueue.j";
 @import "../Service/JobsManagement/JobConcurrentQueue.j";
@@ -174,5 +175,22 @@ var requestManagerSharedInstance = nil;
     CPLog.info(@"<<<< Leaving RequestManager::performGetVetupUsers");
 }
 
+- (void)performInfoVetupUsers:(CPArray)ids
+{
+    CPLog.info(@">>>> Entering RequestManager::performInfoVetupUsers");
+    var  infoVetupUsersJob = [[WSInfoVetupUsersJob alloc] initWithIds:ids];
+    [_jobConcurrentQueue addJobToQueue:infoVetupUsersJob];
+    CPLog.info(@"<<<< Leaving RequestManager::performInfoVetupUsers");
+}
+
+/*
+- (void)performDeleteVetupUsers:(CPArray)ids
+{
+    CPLog.info(@">>>> Entering RequestManager::performDeleteVetupUsers");
+    var  deleteVetupUsersJob = [[WSDeleteVetupUsersJob alloc] initWithIds:ids];
+    [_jobConcurrentQueue addJobToQueue:deleteVetupUsersJob];
+    CPLog.info(@"<<<< Leaving RequestManager::performDeleteVetupUsers");
+}
+*/
 
 @end

@@ -12,17 +12,17 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="1">
-            <rect key="frame" x="0.0" y="0.0" width="1711" height="621"/>
+            <rect key="frame" x="0.0" y="0.0" width="1853" height="621"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tabView initialItem="Yu2-2a-4L2" id="0Og-HV-RHO">
-                    <rect key="frame" x="13" y="10" width="1705" height="597"/>
+                    <rect key="frame" x="13" y="10" width="1835" height="597"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <font key="font" metaFont="system"/>
                     <tabViewItems>
                         <tabViewItem label="Véto Data List" identifier="1" id="Yu2-2a-4L2">
                             <view key="view" id="qGa-oX-T0S">
-                                <rect key="frame" x="10" y="33" width="1685" height="551"/>
+                                <rect key="frame" x="10" y="33" width="1815" height="551"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <tabView type="bottomTabsBezelBorder" initialItem="6xC-5D-xy5" id="DRR-xC-PaG">
@@ -392,17 +392,17 @@
                         </tabViewItem>
                         <tabViewItem label="Utilisateurs CRV" identifier="" id="6bI-y5-Cio">
                             <view key="view" id="lTt-MN-WyY" userLabel="User Tab View">
-                                <rect key="frame" x="10" y="33" width="1685" height="551"/>
+                                <rect key="frame" x="10" y="33" width="1815" height="551"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <tabView type="bottomTabsBezelBorder" initialItem="8ET-sg-zom" id="Pt6-Z9-FVJ">
-                                        <rect key="frame" x="10" y="6" width="1676" height="531"/>
+                                        <rect key="frame" x="10" y="6" width="1795" height="531"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <font key="font" metaFont="system"/>
                                         <tabViewItems>
                                             <tabViewItem label="Clean/Merge" identifier="1" id="8ET-sg-zom" userLabel="Clean et merge">
                                                 <view key="view" id="pCc-PM-Cws" userLabel="Container">
-                                                    <rect key="frame" x="10" y="7" width="1656" height="493"/>
+                                                    <rect key="frame" x="10" y="7" width="1775" height="493"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="g3p-lF-eJa">
@@ -749,7 +749,7 @@
                                             </tabViewItem>
                                             <tabViewItem label="Utilisateurs unique" identifier="1" id="K08-LH-8JR" userLabel="Unique Users">
                                                 <view key="view" id="brb-qv-zvQ" userLabel="Container">
-                                                    <rect key="frame" x="10" y="7" width="1656" height="493"/>
+                                                    <rect key="frame" x="10" y="7" width="1775" height="493"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <button verticalHuggingPriority="750" id="M48-u2-yoM">
@@ -1086,7 +1086,7 @@
                                             </tabViewItem>
                                             <tabViewItem label="Analyse" identifier="1" id="Ymh-fe-jof" userLabel="Analyse">
                                                 <view key="view" id="bCf-BB-I37" userLabel="Container">
-                                                    <rect key="frame" x="10" y="7" width="1656" height="493"/>
+                                                    <rect key="frame" x="10" y="7" width="1775" height="493"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <customView id="EUQ-E4-1tp" userLabel="vetup user container">
@@ -1263,7 +1263,7 @@
                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                         <subviews>
                                                                             <predicateEditor verticalHuggingPriority="750" nestingMode="compound" canRemoveAllRows="YES" rowHeight="25" id="AEg-Kj-jc5">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="698" height="200"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="698" height="225"/>
                                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                                                 <rowTemplates>
                                                                                     <predicateEditorRowTemplate rowType="compound" id="JGh-XU-5uG">
@@ -1463,6 +1463,35 @@
                                                                                             </menu>
                                                                                         </popUpMenus>
                                                                                     </predicateEditorRowTemplate>
+                                                                                    <predicateEditorRowTemplate rowType="simple" id="TgJ-KY-z0I">
+                                                                                        <array key="leftExpressionObject">
+                                                                                            <expression type="keyPath">
+                                                                                                <string key="keyPath">userTypeId</string>
+                                                                                            </expression>
+                                                                                        </array>
+                                                                                        <integer key="rightExpressionObject" value="300"/>
+                                                                                        <popUpMenus>
+                                                                                            <menu id="3Fj-8N-ODv">
+                                                                                                <items>
+                                                                                                    <menuItem title="userTypeId" state="on" id="U9H-xj-69C">
+                                                                                                        <expression key="representedObject" type="keyPath">
+                                                                                                            <string key="keyPath">userTypeId</string>
+                                                                                                        </expression>
+                                                                                                    </menuItem>
+                                                                                                </items>
+                                                                                            </menu>
+                                                                                            <menu id="oLz-yM-yFH">
+                                                                                                <items>
+                                                                                                    <menuItem title="is" state="on" id="ZPK-QW-FwV">
+                                                                                                        <integer key="representedObject" value="4"/>
+                                                                                                    </menuItem>
+                                                                                                    <menuItem title="is not" id="JkB-ki-zkb">
+                                                                                                        <integer key="representedObject" value="5"/>
+                                                                                                    </menuItem>
+                                                                                                </items>
+                                                                                            </menu>
+                                                                                        </popUpMenus>
+                                                                                    </predicateEditorRowTemplate>
                                                                                     <predicateEditorRowTemplate rowType="simple" id="ry9-lg-4au">
                                                                                         <array key="leftExpressionObject">
                                                                                             <expression type="keyPath">
@@ -1481,6 +1510,12 @@
                                                                                             </expression>
                                                                                             <expression type="constant">
                                                                                                 <string key="constantValue">MobileApp</string>
+                                                                                            </expression>
+                                                                                            <expression type="constant">
+                                                                                                <string key="constantValue">AutoCreate</string>
+                                                                                            </expression>
+                                                                                            <expression type="constant">
+                                                                                                <string key="constantValue">null</string>
                                                                                             </expression>
                                                                                         </array>
                                                                                         <comparisonPredicateOptions key="options" caseInsensitive="YES"/>
@@ -1526,6 +1561,16 @@
                                                                                                             <string key="constantValue">MobileApp</string>
                                                                                                         </expression>
                                                                                                     </menuItem>
+                                                                                                    <menuItem title="AutoCreate" id="R2c-QW-v3K">
+                                                                                                        <expression key="representedObject" type="constant">
+                                                                                                            <string key="constantValue">AutoCreate</string>
+                                                                                                        </expression>
+                                                                                                    </menuItem>
+                                                                                                    <menuItem title="null" id="cwF-8V-Kfw">
+                                                                                                        <expression key="representedObject" type="constant">
+                                                                                                            <string key="constantValue">null</string>
+                                                                                                        </expression>
+                                                                                                    </menuItem>
                                                                                                 </items>
                                                                                             </menu>
                                                                                         </popUpMenus>
@@ -1544,17 +1589,37 @@
                                                                         <autoresizingMask key="autoresizingMask"/>
                                                                     </scroller>
                                                                 </scrollView>
-                                                                <button verticalHuggingPriority="750" id="cZs-2m-vxg">
-                                                                    <rect key="frame" x="734" y="297" width="152" height="32"/>
+                                                                <button verticalHuggingPriority="750" id="8vg-Gd-p2H">
+                                                                    <rect key="frame" x="809" y="297" width="80" height="32"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                                    <buttonCell key="cell" type="push" title="test multiselection" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="acz-lW-hm2">
+                                                                    <buttonCell key="cell" type="push" title="Delete" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="tcW-66-sod">
                                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                         <font key="font" metaFont="system"/>
                                                                     </buttonCell>
                                                                     <connections>
-                                                                        <action selector="testMultiselection:" target="0kn-5G-8lx" id="AnO-6s-kvM"/>
+                                                                        <action selector="testMultiselection:" target="0kn-5G-8lx" id="Gd4-Mo-FiY"/>
                                                                     </connections>
                                                                 </button>
+                                                                <button verticalHuggingPriority="750" id="cZs-2m-vxg">
+                                                                    <rect key="frame" x="739" y="297" width="63" height="32"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                    <buttonCell key="cell" type="push" title="Info" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="acz-lW-hm2">
+                                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                        <font key="font" metaFont="system"/>
+                                                                    </buttonCell>
+                                                                    <connections>
+                                                                        <action selector="getInfoAction:" target="0kn-5G-8lx" id="1Mh-pB-qib"/>
+                                                                    </connections>
+                                                                </button>
+                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="hq5-aR-ezR">
+                                                                    <rect key="frame" x="889" y="304" width="323" height="17"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Fetching data / delete data" id="G1n-4G-ATE">
+                                                                        <font key="font" metaFont="system"/>
+                                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                    </textFieldCell>
+                                                                </textField>
                                                             </subviews>
                                                         </customView>
                                                         <button verticalHuggingPriority="750" id="RaC-PH-kKy">
@@ -1613,30 +1678,6 @@
                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
                                                         </textField>
-                                                        <customView id="V8e-8T-bW3" userLabel="Divers">
-                                                            <rect key="frame" x="1240" y="29" width="411" height="434"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
-                                                            <subviews>
-                                                                <textField verticalHuggingPriority="750" id="Rdp-EL-vAv" userLabel="AnalyseTF" customClass="LPMultiLineTextField">
-                                                                    <rect key="frame" x="7" y="9" width="480" height="161"/>
-                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
-                                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="xn5-Nx-LQx">
-                                                                        <font key="font" metaFont="system"/>
-                                                                        <string key="title">Filtres:
-- CRV-597 : retrouver les clinicId = 0 et vetupGuid != null
-- referer à "Import" et VetupGuid != null
-
-TODO:
-- menu contextuel sur row (multiselection):
-   - supression du user
-   - renvoyer les infos du users (nombre d'animaux attachés, visites, rappels...)
-- colonne editable =&gt; modification de l'email, du clinicId...</string>
-                                                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                                    </textFieldCell>
-                                                                </textField>
-                                                            </subviews>
-                                                        </customView>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="UNs-du-uy2">
                                                             <rect key="frame" x="476" y="471" width="79" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -1675,6 +1716,50 @@ TODO:
                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
                                                         </textField>
+                                                        <customView id="V8e-8T-bW3" userLabel="Divers">
+                                                            <rect key="frame" x="1246" y="32" width="526" height="434"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
+                                                            <subviews>
+                                                                <textField verticalHuggingPriority="750" id="Rdp-EL-vAv" userLabel="staticText" customClass="LPMultiLineTextField">
+                                                                    <rect key="frame" x="8" y="198" width="626" height="226"/>
+                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="xn5-Nx-LQx">
+                                                                        <font key="font" metaFont="system"/>
+                                                                        <string key="title">Filtres:
+- CRV-597 : retrouver les clinicId = 0 et vetupGuid != null
+- referer à "Import" et VetupGuid != null
+
+Rappel:
+ - user créés depuis VSR: vetupGuid=null, clinicId != 0, registrationReferrer=VSR
+ - user créés depuis CLI: vetupGuid=null, clinicId != 0, registrationReferrer=CLI
+ - registrationReferrer = AutoCreate pour les users créés par un uniqueUser qui voulait créé un animal 
+</string>
+                                                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                    </textFieldCell>
+                                                                </textField>
+                                                                <textField verticalHuggingPriority="750" id="6RI-Es-4kl" userLabel="AnalyseTF" customClass="LPMultiLineTextField">
+                                                                    <rect key="frame" x="8" y="13" width="511" height="148"/>
+                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="UMx-cC-03K">
+                                                                        <font key="font" metaFont="system"/>
+                                                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                    </textFieldCell>
+                                                                </textField>
+                                                                <button verticalHuggingPriority="750" id="taj-du-rOY">
+                                                                    <rect key="frame" x="7" y="162" width="70" height="32"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                    <buttonCell key="cell" type="push" title="clear" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="UUd-Fx-dIG">
+                                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                        <font key="font" metaFont="system"/>
+                                                                    </buttonCell>
+                                                                    <connections>
+                                                                        <action selector="clear:" target="0kn-5G-8lx" id="sPU-7R-xQL"/>
+                                                                    </connections>
+                                                                </button>
+                                                            </subviews>
+                                                        </customView>
                                                     </subviews>
                                                 </view>
                                             </tabViewItem>
@@ -1686,7 +1771,7 @@ TODO:
                     </tabViewItems>
                 </tabView>
             </subviews>
-            <point key="canvasLocation" x="662.5" y="360.5"/>
+            <point key="canvasLocation" x="733.5" y="360.5"/>
         </customView>
         <customObject id="zyS-xK-gd0" userLabel="ModuleDataListTabController" customClass="ModuleDataListTabController">
             <connections>
@@ -1749,8 +1834,11 @@ TODO:
         </customObject>
         <customObject id="0kn-5G-8lx" userLabel="ModuleAnalyseUserController" customClass="ModuleAnalyseUserController">
             <connections>
+                <outlet property="_actionTF" destination="hq5-aR-ezR" id="aXZ-o8-DTT"/>
+                <outlet property="_analyseTF" destination="6RI-Es-4kl" id="Ytc-gk-09X"/>
                 <outlet property="_container" destination="bCf-BB-I37" id="fGO-Fa-whz"/>
                 <outlet property="_criterasLabelTF" destination="2CJ-l7-4Tb" id="g3m-xV-0Os"/>
+                <outlet property="_loadingButton" destination="RaC-PH-kKy" id="Cvl-pd-gXe"/>
                 <outlet property="_predicateEditor" destination="AEg-Kj-jc5" id="e9g-bb-Nf1"/>
                 <outlet property="_progressLoadingTF" destination="7oU-2i-CU6" id="MLS-0T-rWZ"/>
                 <outlet property="_tableCountTF" destination="zkE-1s-7AW" id="BTS-4G-Ltz"/>
