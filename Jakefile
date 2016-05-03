@@ -1,6 +1,6 @@
 /*
  * Jakefile
- * IMRConsole
+ * ConsoleSync
  *
  * Created by You on September 9, 2013.
  * Copyright 2013, Your Company All rights reserved.
@@ -14,7 +14,7 @@ var ENV = require("system").env,
     app = require("cappuccino/jake").app,
     configuration = ENV["CONFIG"] || ENV["CONFIGURATION"] || ENV["c"] || "Debug",
     OS = require("os"),
-    projectName = "IMRConsole";
+    projectName = "ConsoleSync";
 
 app (projectName, function(task)
 {
@@ -23,15 +23,15 @@ app (projectName, function(task)
     if (configuration === "Debug")
         ENV["OBJJ_INCLUDE_PATHS"] = FILE.join(ENV["OBJJ_INCLUDE_PATHS"], configuration);
 
-    task.setBuildIntermediatesPath(FILE.join("Build", "IMRConsole.build", configuration));
+    task.setBuildIntermediatesPath(FILE.join("Build", "ConsoleSync.build", configuration));
     task.setBuildPath(FILE.join("Build", configuration));
 
-    task.setProductName("IMRConsole");
-    task.setIdentifier("com.yourcompany.IMRConsole");
+    task.setProductName("ConsoleSync");
+    task.setIdentifier("com.yourcompany.ConsoleSync");
     task.setVersion("1.0");
     task.setAuthor("Your Company");
     task.setEmail("feedback @nospam@ yourcompany.com");
-    task.setSummary("IMRConsole");
+    task.setSummary("ConsoleSync");
     task.setSources(new FileList("**/*.j").exclude(FILE.join("Build", "**")).exclude(FILE.join("Frameworks", "Source", "**")));
     task.setResources(new FileList("Resources/**"));
     task.setIndexFilePath("index.html");
@@ -85,13 +85,13 @@ task ("deploy", ["release"], function()
 task ("desktop", ["release"], function()
 {
     FILE.mkdirs(FILE.join("Build", "Desktop", projectName));
-    require("cappuccino/nativehost").buildNativeHost(FILE.join("Build", "Release", projectName), FILE.join("Build", "Desktop", projectName, "IMRConsole.app"));
+    require("cappuccino/nativehost").buildNativeHost(FILE.join("Build", "Release", projectName), FILE.join("Build", "Desktop", projectName, "ConsoleSync.app"));
     printResults("Desktop")
 });
 
 task ("run-desktop", ["desktop"], function()
 {
-    OS.system([FILE.join("Build", "Desktop", projectName, "IMRConsole.app", "Contents", "MacOS", "NativeHost"), "-i"]);
+    OS.system([FILE.join("Build", "Desktop", projectName, "ConsoleSync.app", "Contents", "MacOS", "NativeHost"), "-i"]);
 });
 
 

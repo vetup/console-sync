@@ -80,7 +80,7 @@
         }
         var userInfo = [[CPMutableDictionary alloc] init];
 
-        if ((_error != nil) && (![[error code] isEqualToString:WSNoError]))
+        if ((_error != nil) && (![[_error code] isEqualToString:WSNoError]))
         {
             [userInfo setObject:_error forKey:ServicesErrorKey];
         }

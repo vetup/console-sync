@@ -55,7 +55,6 @@ WSGetVetupUsersFunction   = @"getVetupUsers"
 
     [super parseJSONResponse:iResult];
 
-
 //    if (WSNoError == self.error.code)
     if (nil == _error)
     {
@@ -71,11 +70,14 @@ WSGetVetupUsersFunction   = @"getVetupUsers"
             {
                 _nbLoadedUsers = [vetupUsersJS count];
                 //On économise de la mémoire, on alimente _vetupUsers de DataManager
-//                var vetupUsers = [[DataManager sharedManager] vetupUsersFromJSArray:vetupUsersJS];
                 [[DataManager sharedManager] addVetupUsersFromJSArray:vetupUsersJS];
-//                [_data setObject:vetupUsers forKey:"vetupUsers"];
             }
-            _totalUsers = data.totalUsers
+
+            //totalUser est renvoyé par le serveur uniquement sur la première page
+            if (data.totalUsers != nil)
+                _totalUsers = data.totalUsers;
+            else
+                _totalUsers = -1;
         }
     }
     else

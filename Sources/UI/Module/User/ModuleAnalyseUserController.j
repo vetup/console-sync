@@ -70,6 +70,58 @@ var C_COLUMN_UID                = "uid",
 {
     CPLog.debug(@">>>> Entering ModuleAnalyseUserController::awakeFromCib");
     [_container setBackgroundColor:[CPColor whiteColor]];
+//    [_container setBackgroundColor:[CPColor greenColor]];
+
+    //1- créer la scroll view
+    var frame = [_container frame];
+    frame.size.height -= 20; //place pour la scrollbar
+    frame.size.width -= 20; //place pour la scrollbar
+    var scrollView = [[CPScrollView alloc] initWithFrame:frame];
+    [scrollView setAutoresizingMask:CPViewWidthSizable | CPViewHeightSizable];
+ //   [scrollView setBackgroundColor:[CPColor redColor]];
+    [scrollView setHasHorizontalScroller:true];
+    [scrollView setHasVerticalScroller:true];
+
+    //2- transférer les subview du container vers une nouvelle vue, en calculant la taille du nouveau container
+//     var documentSubView = [[CPView alloc] initWithFrame:CGRectMake(0,0,5000,600)],
+     var documentSubView = [[CPView alloc] initWithFrame:[_container frame]],
+//     var documentSubView = [CPView new],
+         containerSubviews = [_container subviews];
+
+    var height = 0,
+        width = 0;
+
+    for (var i = 0; i < [containerSubviews count]; i++)
+    {
+        var subView = containerSubviews[i],
+            frame = [subView frame];
+
+        var newHeight = frame.size.height + frame.origin.y;
+        height = MAX(height, newHeight);
+
+        var newWidth = frame.size.width + frame.origin.x;
+        width = MAX(width, newWidth);
+
+        [documentSubView addSubview:subView];
+    }
+
+    [documentSubView setFrame:CGRectMake(0 ,0, width + 40, 600)];
+
+    //3 - Ajouter la scrollview au container
+    [_container addSubview:scrollView];
+
+    //4 - positionner le documentView
+    [scrollView setDocumentView:documentSubView];
+/*
+    var superview = [_container superview];
+    [scrollView setBackgroundColor:[CPColor redColor]];
+    [superview addSubView:scrollView];
+    */
+
+//    [_container setHasHorizontalScroller:true];
+//    [_container setHasHorizontalScroller:false];
+
+//[_scrollview setDocumentView:_tableview];
 
 //    CPLog.debug(@"CONTAINER ModuleAnalyseUserController: %@", _container);
 
@@ -157,6 +209,7 @@ var C_COLUMN_UID                = "uid",
 
     [[CPNotificationCenter defaultCenter] addObserver:self selector:@selector(_getVetupUsersNotification:)  name:WSGetVetupUsersNotification   object:nil];
     [[CPNotificationCenter defaultCenter] addObserver:self selector:@selector(_infoVetupUsersNotification:)  name:WSInfoVetupUserNotification   object:nil];
+    [[CPNotificationCenter defaultCenter] addObserver:self selector:@selector(_deleteVetupUsersNotification:)  name:WSDeleteVetupUserNotification   object:nil];
 
 
     //10000 user par requête
@@ -170,6 +223,15 @@ var C_COLUMN_UID                = "uid",
     [_tableCountTF setEditable:NO];
     [_tableCountTF setStringValue:@"0"];
     [_actionTF setStringValue:@""];
+
+//    [_criterasLabelTF setEditable:YES];
+    [_criterasLabelTF setSelectable:YES];
+    [_criterasLabelTF setEditable:YES];
+
+    //analyse Multiline textfield
+    [_analyseTF setEditable:NO];
+    [_analyseTF setEnabled:YES];
+    [_analyseTF setScrollable:YES];
 
     CPLog.debug(@"<<<< Leaving ModuleAnalyseUserController::awakeFromCib");
 }
@@ -226,9 +288,11 @@ var C_COLUMN_UID                = "uid",
 {
     if ([aKeyPath isEqualToString:@"bindedPredicateEditorValue"])
     {
+//        [self _refreshFilteredData];
+
         var filterDescription = [bindedPredicateEditorValue description];
         [_criterasLabelTF setStringValue:filterDescription];
-
+        CPLog.debug(@" PREDICATE: %@", filterDescription);
         [self _refreshTableFromPredicate];
     }
 }
@@ -238,7 +302,7 @@ var C_COLUMN_UID                = "uid",
 
 - (void)ruleEditorRowsDidChange:(CPNotification)notification
 {
-//    CPLog.debug(@" ruleEditorRowsDidChange :  %@", [_predicateEditor objectValue]);
+    CPLog.debug(@" ruleEditorRowsDidChange :  %@", [_predicateEditor objectValue]);
 }
 
 
@@ -270,8 +334,6 @@ var C_COLUMN_UID                = "uid",
     var indexes = [_userTable selectedRowIndexes],
         objects = [_users objectsAtIndexes:indexes];
 
-
-
     if ([objects count] > 0)
     {
         var ids = [CPArray new];
@@ -301,10 +363,68 @@ var C_COLUMN_UID                = "uid",
 }
 
 
+- (IBAction)deleteAction:(id)aSender
+{
+    var indexes = [_userTable selectedRowIndexes],
+        objects = [_users objectsAtIndexes:indexes];
+
+    if ([objects count] > 0)
+    {
+        var ids = [CPArray new];
+
+        for (var i = 0; i < [objects count]; i++)
+        {
+            var user = [objects objectAtIndex:i],
+                idStr = [[user uid] stringValue];
+            [ids addObject:idStr];
+        }
+
+        [[AppController appDelegate] startProgressWithText:@"suppression des vetup_users..."];
+        [_actionTF setStringValue:@"Deleting data..."];
+
+        [[RequestManager sharedManager] performDeleteVetupUsers:ids];
+    }
+    else
+    {
+        [[ErrorManager sharedManager] displayErrorMessage:@"Vous devez sélectionner les utilisateurs dans la table"];
+    }
+}
+
+- (IBAction)setPattern1Action:(id)aSender
+{
+    var predicateFormat = @"clinicId == 0 AND vetupGuid != \"null\"",
+        predicate = [CPPredicate predicateWithFormat:predicateFormat];
+
+    [_predicateEditor setObjectValue:predicate];
+
+    [_predicateEditor reloadPredicate];
+//    [_predicateEditor reloadCriteria];
+
+ //reloadCriteria
+  //  [self _refreshFilteredData];
+}
+
+- (IBAction)setPattern2Action:(id)aSender
+{
+
+}
+
+//
 
 #pragma mark -
 #pragma mark Private
 
+
+/*
+- (void)_refreshFilteredData
+{
+    var filterDescription = [bindedPredicateEditorValue description];
+    [_criterasLabelTF setStringValue:filterDescription];
+
+    CPLog.debug(@" PREDICATE: %@", filterDescription);
+    [self _refreshTableFromPredicate];
+}
+*/
 
 - (void)_displayProgress:(CPNumber)progressValue
 {
@@ -453,6 +573,51 @@ var C_COLUMN_UID                = "uid",
 #pragma mark -
 #pragma mark WS Notification
 
+- (void)_deleteVetupUsersNotification:(CPNotification)notification;
+{
+    CPLog.debug(@"_deleteVetupUsersNotification");
+
+    var userInfo = [notification userInfo],
+        error    = [userInfo objectForKey:ServicesErrorKey];
+
+    [[AppController appDelegate] stopProgress];
+
+    [_actionTF setStringValue:@""];
+    [[AppController appDelegate] stopProgressWithText:@""];
+
+    if (nil == error)
+    {
+        var job = [userInfo objectForKey:ServicesJobKey],
+            request = [job request],
+            allUsers = [[DataManager sharedManager] vetupUsers],
+            info = [request info],
+            indexes = [_userTable selectedRowIndexes],
+            objects = [_users objectsAtIndexes:indexes],
+            message = @"ids: ";
+
+        for (var i = 0; i < [objects count]; i++)
+        {
+            var user = [objects objectAtIndex:i];
+            message = [CPString stringWithFormat:@"%@ %@", message, [user uid]];
+            [allUsers removeObject:user];
+        }
+
+        [self _refreshTableFromPredicate];
+
+
+        var text = [CPString stringWithFormat:@"%@\nvetup_user supprimés correctement: %@", [_analyseTF stringValue], message];
+        [_analyseTF setStringValue:text];
+
+        [_userTable deselectAll];
+    }
+    else
+    {
+        var errorMsg = @"La suppression des vetup users a échoué";
+        [[AppController appDelegate] stopProgressWithText:errorMsg];
+        [[ErrorManager sharedManager] displayErrorMessage:errorMsg];
+    }
+}
+
 
 - (void)_infoVetupUsersNotification:(CPNotification)notification;
 {
@@ -534,7 +699,7 @@ var C_COLUMN_UID                = "uid",
     {
         [[AppController appDelegate] stopProgressWithText:@"Le chargement des vetup users a échoué"];
 
-        var errorMsg = [CPString stringWithFormat:@"Le chargement des vetup users a échoué\n%@", error.desc];
+        var errorMsg = [CPString stringWithFormat:@"Le chargement des vetup users a échoué\n%@", [error desc]];
         [[ErrorManager sharedManager] displayErrorMessage:errorMsg];
 
         [_loadingButton setTitle:@"Load Vetup Users"];

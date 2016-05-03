@@ -176,11 +176,14 @@ var dataManagerSharedInstance = nil;
         [vetupUserObj setLastname:vetupUser.lastname];
         [vetupUserObj setPassword:vetupUser.password];
 
+        [vetupUserObj setLastUpdate:vetupUser.lastUpdate];
 
+/*
         if (vetupUser.lastUpdate != null)
             [vetupUserObj setLastUpdate:vetupUser.lastUpdate.date];
         else
             [vetupUserObj setLastUpdate:nil];
+        */
 
         [vetupUserObj setVetupGuid:vetupUser.vetupGuid];
         [vetupUserObj setRegistrationReferrer:vetupUser.registrationReferrer];
