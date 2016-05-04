@@ -290,8 +290,8 @@ var C_COLUMN_UID                = "uid",
     {
 //        [self _refreshFilteredData];
 
-        var filterDescription = [bindedPredicateEditorValue description];
-        var currentFilter =  [_criterasLabelTF stringValue];
+        var filterDescription = [bindedPredicateEditorValue description],
+            currentFilter =  [_criterasLabelTF stringValue];
 
         if (![currentFilter isEqualToString:filterDescription])
         {
