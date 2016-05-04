@@ -291,9 +291,15 @@ var C_COLUMN_UID                = "uid",
 //        [self _refreshFilteredData];
 
         var filterDescription = [bindedPredicateEditorValue description];
-        [_criterasLabelTF setStringValue:filterDescription];
-        CPLog.debug(@" PREDICATE: %@", filterDescription);
-        [self _refreshTableFromPredicate];
+        var currentFilter =  [_criterasLabelTF stringValue];
+
+        if (![currentFilter isEqualToString:filterDescription])
+        {
+            [_criterasLabelTF setStringValue:filterDescription];
+            CPLog.debug(@" PREDICATE: %@", filterDescription);
+            [self _refreshTableFromPredicate];
+        }
+
     }
 }
 
