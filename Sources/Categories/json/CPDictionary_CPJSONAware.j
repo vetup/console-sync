@@ -19,6 +19,8 @@
 @implementation CPDictionary (CPJSONAware)
 
 
+//PF: 13/05/2015 - changé les this par des self...
+
 // uses internal javascript CPDictionary representation for better performance
 // (avoids calls to objj runtime), but would be impacted by its changes.
 -(JSObject)toJSObject
@@ -28,10 +30,10 @@
 	// ["key1":{}, "key2":{}] isn't valid. So we have to use a regular javascript/json representation : {"key1":{}, "key2":{}}
 	// Then we have to pass the __objjClassName to identify the collection from other objects on the server-side (not required for CPArray
 	// as we can test for the presence of []).
-	for(var keyIndex in this._keys) {
+	for(var keyIndex in self._keys) {
 		if(keyIndex!="isa") {
-			var keyName = this._keys[keyIndex];
-			result[keyName] = [this._buckets[keyName] toJSObject];
+			var keyName = self._keys[keyIndex];
+			result[keyName] = [self._buckets[keyName] toJSObject];
 		}
 	}
 	/*var keysEnum = [self keyEnumerator];

@@ -158,8 +158,6 @@ var dataManagerSharedInstance = nil;
 
 - (void)addVetupUsersFromJSArray:(id)vetupUsersFromJSArray
 {
-//    var vetupUsers = [CPMutableArray new];
-
     var vetupUsers =  _vetupUsers;
 
     for (var i = 0;  i < [vetupUsersFromJSArray count]; i++)
@@ -168,7 +166,6 @@ var dataManagerSharedInstance = nil;
             vetupUserObj    = [VetupUser new];
 
         [vetupUserObj setUid:vetupUser.id];
-//        [vetupUserObj setUserTypeName:vetupUser.userTypeName];
         [vetupUserObj setUserTypeId:vetupUser.userTypeId];
         [vetupUserObj setClinicId:vetupUser.clinicId];
         [vetupUserObj setEmail:vetupUser.email];
@@ -178,39 +175,28 @@ var dataManagerSharedInstance = nil;
 
         [vetupUserObj setLastUpdate:vetupUser.lastUpdate];
 
-/*
-        if (vetupUser.lastUpdate != null)
-            [vetupUserObj setLastUpdate:vetupUser.lastUpdate.date];
-        else
-            [vetupUserObj setLastUpdate:nil];
-        */
-
         [vetupUserObj setVetupGuid:vetupUser.vetupGuid];
         [vetupUserObj setRegistrationReferrer:vetupUser.registrationReferrer];
 
-
-
         [vetupUsers addObject:vetupUserObj];
-
-/*
-    CPString    userTypeName            @accessors(property=userTypeName);
-    CPNumber    clinicId                @accessors(property=clinicId);
-    CPString    email                   @accessors(property=email);
-    CPString    firstname               @accessors(property=firstname);
-    CPString    lastname                @accessors(property=lastname);
-    CPString    password                @accessors(property=password);
-    CPString    registrationReferrer    @accessors(property=registrationReferrer);
-    CPString    vetupGuid               @accessors(property=vetupGuid);
-    CPString    lastUpdate              @accessors(property=lastUpdate);
-*/
-
     }
-
-//    return vetupUsers;
 }
 
+- (VetupUser)vetupUserByUid:(CPNumber)aUid
+{
+    var result = null;
 
+    [_vetupUsers enumerateObjectsUsingBlock:function(aObject, aIndex, stop)
+        {
+            if ([aObject uid] == aUid)
+            {
+                result = aObject;
+                stop = true;
+            }
+        }];
 
+    return result;
+}
 
 - (CPMutableArray)uniqueUsersFromJSArray:(id)uniqueUsersFromJSArray
 {

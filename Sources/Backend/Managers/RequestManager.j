@@ -21,6 +21,8 @@
 @import "../Service/Jobs/WSGetVetupUsersJob.j"
 @import "../Service/Jobs/WSInfoVetupUsersJob.j"
 @import "../Service/Jobs/WSDeleteVetupUsersJob.j"
+@import "../Service/Jobs/WSUpdateVetupUserJob.j"
+
 
 @import "../Service/JobsManagement/JobQueue.j";
 @import "../Service/JobsManagement/JobConcurrentQueue.j";
@@ -190,6 +192,14 @@ var requestManagerSharedInstance = nil;
     var  deleteVetupUsersJob = [[WSDeleteVetupUsersJob alloc] initWithIds:ids];
     [_jobConcurrentQueue addJobToQueue:deleteVetupUsersJob];
     CPLog.info(@"<<<< Leaving RequestManager::performDeleteVetupUsers");
+}
+
+- (void)performUpdateVetupUser:(JSObject)aValue user:(VetupUser)aUser
+{
+    CPLog.info(@">>>> Entering RequestManager::performUpdateVetupUser");
+    var  updateVetupUserJob = [[WSUpdateVetupUserJob alloc] initWithParam:aValue user:aUser];
+    [_jobConcurrentQueue addJobToQueue:updateVetupUserJob];
+    CPLog.info(@"<<<< Leaving RequestManager::performUpdateVetupUser");
 }
 
 

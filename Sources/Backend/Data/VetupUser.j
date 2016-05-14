@@ -37,6 +37,36 @@
     return self;
 }
 
+- (id)initWithVetupUser:(VetupUser)aUser
+{
+    if (self = [super init])
+    {
+        uid                     = [aUser uid];
+        userTypeId              = [aUser userTypeId];
+        clinicId                = [aUser clinicId];
+        email                   = [aUser email];
+        firstname               = [aUser firstname];
+        lastname                = [aUser lastname];
+        registrationReferrer    = [aUser registrationReferrer];
+        vetupGuid               = [aUser vetupGuid];
+        lastUpdate              = [aUser lastUpdate];
+    }
+    return self;
+}
+
+- (void)copyVetupUser:(VetupUser)aUser
+{
+    uid                     = [aUser uid];
+    userTypeId              = [aUser userTypeId];
+    clinicId                = [aUser clinicId];
+    email                   = [aUser email];
+    firstname               = [aUser firstname];
+    lastname                = [aUser lastname];
+    registrationReferrer    = [aUser registrationReferrer];
+    vetupGuid               = [aUser vetupGuid];
+    lastUpdate              = [aUser lastUpdate];
+}
+
 @end
 
 

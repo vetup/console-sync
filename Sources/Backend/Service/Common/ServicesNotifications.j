@@ -46,6 +46,7 @@ WSGetCRVUniqueUsersNotification                 = @"WSGetCRVUniqueUsersNotificat
 WSGetVetupUsersNotification                     = @"WSGetVetupUsersNotification";
 WSInfoVetupUserNotification                     = @"WSInfoVetupUserNotification";
 WSDeleteVetupUserNotification                   = @"WSDeleteVetupUserNotification";
+WSUpdateVetupUserNotification                   = @"WSUpdateVetupUserNotification";
 
 
 //fonction Admin

@@ -156,10 +156,10 @@ var C_COLUMN_UID                = "uid",
     [lastUpdateTableColumn setEditable:YES]; //permettre la sélection
 
     var vetupGuidTableColumn = [_userTable tableColumnWithIdentifier:C_COLUMN_VETUPGUID_ID];
-    [vetupGuidTableColumn setEditable:NO];
+    [vetupGuidTableColumn setEditable:YES];
 
     var registrationReferrerTableColumn = [_userTable tableColumnWithIdentifier:C_COLUMN_REGISTRATION_REFERRER_ID];
-    [registrationReferrerTableColumn setEditable:NO];
+    [registrationReferrerTableColumn setEditable:YES];
 
 
     //TABLE VIEW SORTING
@@ -210,6 +210,7 @@ var C_COLUMN_UID                = "uid",
     [[CPNotificationCenter defaultCenter] addObserver:self selector:@selector(_getVetupUsersNotification:)  name:WSGetVetupUsersNotification   object:nil];
     [[CPNotificationCenter defaultCenter] addObserver:self selector:@selector(_infoVetupUsersNotification:)  name:WSInfoVetupUserNotification   object:nil];
     [[CPNotificationCenter defaultCenter] addObserver:self selector:@selector(_deleteVetupUsersNotification:)  name:WSDeleteVetupUserNotification   object:nil];
+    [[CPNotificationCenter defaultCenter] addObserver:self selector:@selector(_updateVetupUserNotification:)  name:WSUpdateVetupUserNotification   object:nil];
 
 
     //10000 user par requête
@@ -402,17 +403,17 @@ var C_COLUMN_UID                = "uid",
         predicate = [CPPredicate predicateWithFormat:predicateFormat];
 
     [_predicateEditor setObjectValue:predicate];
-
     [_predicateEditor reloadPredicate];
-//    [_predicateEditor reloadCriteria];
-
- //reloadCriteria
-  //  [self _refreshFilteredData];
 }
+
 
 - (IBAction)setPattern2Action:(id)aSender
 {
+    var predicateFormat = @"vetupGuid == \"null\" AND clinicId != 0 AND registrationReferrer == \"Import\"",
+        predicate = [CPPredicate predicateWithFormat:predicateFormat];
 
+    [_predicateEditor setObjectValue:predicate];
+    [_predicateEditor reloadPredicate];
 }
 
 //
@@ -570,10 +571,49 @@ var C_COLUMN_UID                = "uid",
     [aTableView reloadData];
 }
 
-
 #pragma mark -
-#pragma mark Edition des cellules de la table colorTable
+#pragma mark Edition des cellules de la table vetup_user
 
+
+- (void)tableView:(CPTableView)aTableView setObjectValue:(id)aValue forTableColumn:(CPTableColumn)aColumn row:(CPInteger)aRow
+{
+ //   CPLog.debug(@"ModuleArticleCategoryTabController::setObjectValue: row: %d   value: %@", aRow, aValue);
+    var value = [aValue stringByTrimmingWhitespace],
+        user = _users[aRow],
+        identifier = [aColumn identifier],
+        currentValue = @"",
+        property = @"",
+        currentUser = [[VetupUser alloc] initWithVetupUser:user];
+
+    if (![value isEqualToString:@""])
+    {
+        switch (identifier)
+        {
+            case C_COLUMN_FIRSTNAME_ID:             { currentValue = [user firstname]; property = @"firstname"; [user setFirstname:value]; } break;
+            case C_COLUMN_LASTNAME_ID:              { currentValue = [user lastname]; property = @"lastname"; [user setLastname:value];} break;
+            case C_COLUMN_PASSWORD_ID:              { currentValue = [user password]; property = @"password"; [user setPassword:value];} break;
+ //           case C_COLUMN_VETUPGUID_ID:             { currentValue = [user vetupGuid]; property = @"vetupGuid"; [user setVetupGuid:value];} break;
+            case C_COLUMN_REGISTRATION_REFERRER_ID: { currentValue = [user registrationReferrer]; property = @"registrationReferrer"; [user setRegistrationReferrer:value];} break;
+        }
+
+        var isValueChanged = (![property isEqualToString:@""] && ![currentValue isEqual:value]);
+
+        if (isValueChanged)
+        {
+            var dict =  @{property: value},  //dictionnaire literal
+                message = [CPString stringWithFormat:@"Updating user [%d]...", [user uid]];
+
+            [_actionTF setStringValue:message];
+
+            [[AppController appDelegate] startProgressWithText:@"Modification du user en cours..."];
+            //[[AppController appDelegate] startProgress];
+            [[RequestManager sharedManager] performUpdateVetupUser:dict user:currentUser];
+
+//            [self _refreshTableFromPredicate];
+            [self refresh];
+        }
+    }
+}
 
 
 #pragma mark -
@@ -608,7 +648,8 @@ var C_COLUMN_UID                = "uid",
             [allUsers removeObject:user];
         }
 
-        [self _refreshTableFromPredicate];
+        //[self _refreshTableFromPredicate];
+        [self refresh];
 
 
         var text = [CPString stringWithFormat:@"%@\nvetup_user supprimés correctement: %@", [_analyseTF stringValue], message];
@@ -653,6 +694,46 @@ var C_COLUMN_UID                = "uid",
         [[ErrorManager sharedManager] displayErrorMessage:errorMsg];
     }
 }
+
+- (void)_updateVetupUserNotification:(CPNotification)notification;
+{
+    CPLog.debug(@"_updateVetupUserNotification");
+
+    var userInfo = [notification userInfo],
+        error    = [userInfo objectForKey:ServicesErrorKey];
+
+//    [[AppController appDelegate] stopProgress];
+
+    [_actionTF setStringValue:@""];
+    [[AppController appDelegate] stopProgressWithText:@""];
+
+    var job = [userInfo objectForKey:ServicesJobKey],
+        request = [job request];
+
+    if (nil == error)
+    {
+        var info = [request info],
+            textContact = [CPString stringWithFormat:@"%@\n%@", [_analyseTF stringValue], info];
+
+        [_analyseTF setStringValue:textContact];
+    }
+    else
+    {
+        var errorMsg = @"La modification du user a échoué",
+            updatedUser = [request vetupUser],
+            user = [[DataManager sharedManager] vetupUserByUid:[updatedUser uid]];
+
+        //on remet les valeurs intiales (avant la modification) dans l'objet vetup_user
+        [user copyVetupUser:updatedUser];
+
+        //[self _refreshTableFromPredicate];
+        [self refresh];
+
+        [[ErrorManager sharedManager] displayErrorMessage:errorMsg];
+        [[AppController appDelegate] stopProgressWithText:errorMsg];
+    }
+}
+
 
 
 - (void)_getVetupUsersNotification:(CPNotification)notification;
