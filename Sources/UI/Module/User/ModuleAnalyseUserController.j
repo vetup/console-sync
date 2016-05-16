@@ -592,13 +592,27 @@ var C_COLUMN_UID                = "uid",
             case C_COLUMN_FIRSTNAME_ID:             { currentValue = [user firstname]; property = @"firstname"; [user setFirstname:value]; } break;
             case C_COLUMN_LASTNAME_ID:              { currentValue = [user lastname]; property = @"lastname"; [user setLastname:value];} break;
             case C_COLUMN_PASSWORD_ID:              { currentValue = [user password]; property = @"password"; [user setPassword:value];} break;
- //           case C_COLUMN_VETUPGUID_ID:             { currentValue = [user vetupGuid]; property = @"vetupGuid"; [user setVetupGuid:value];} break;
+            case C_COLUMN_VETUPGUID_ID:             { currentValue = [user vetupGuid]; property = @"vetupGuid"; [user setVetupGuid:value];} break;
             case C_COLUMN_REGISTRATION_REFERRER_ID: { currentValue = [user registrationReferrer]; property = @"registrationReferrer"; [user setRegistrationReferrer:value];} break;
         }
 
-        var isValueChanged = (![property isEqualToString:@""] && ![currentValue isEqual:value]);
+        var isValueChanged = (![property isEqualToString:@""] && ![currentValue isEqual:value]),
+            isUpdateAllowed = true;
 
-        if (isValueChanged)
+        if (isValueChanged & [property isEqualToString:@"vetupGuid"])
+        {
+//      [value intValue] renvoie 0 si ce n'est pas un entier (ca suffit pour notre besoin, même si 0 est un entier)
+
+            var isValidVetupGuidValue = ( ([value intValue] != 0) && ([value length] == 19) || [value isEqualToString:@"null"]);
+            if (0 == isValidVetupGuidValue)
+            {
+                isUpdateAllowed = false;
+                [user setVetupGuid:[currentUser vetupGuid]]; //On remet l'ancienne valeur
+                [[ErrorManager sharedManager] displayErrorMessage:@"vetupGuid doit être un entier de 19 chiffres ou null"];
+            }
+        }
+
+        if (isUpdateAllowed && isValueChanged)
         {
             var dict =  @{property: value},  //dictionnaire literal
                 message = [CPString stringWithFormat:@"Updating user [%d]...", [user uid]];
@@ -614,6 +628,7 @@ var C_COLUMN_UID                = "uid",
         }
     }
 }
+
 
 
 #pragma mark -
