@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="ModuleViewController">
@@ -1660,6 +1660,17 @@
                                                                         <action selector="setPattern2Action:" target="0kn-5G-8lx" id="6lC-NF-R3i"/>
                                                                     </connections>
                                                                 </button>
+                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="9FT-Kn-6mH">
+                                                                    <rect key="frame" x="748" y="314" width="469" height="42"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="8Oi-Rs-vek">
+                                                                        <font key="font" metaFont="system"/>
+                                                                        <string key="title">TODO =&gt; c'est impossible normalement !: 
+     registrationReferrer == "CLI" AND clinicId == 0: surement le bug CRV-597</string>
+                                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                    </textFieldCell>
+                                                                </textField>
                                                             </subviews>
                                                         </customView>
                                                         <button verticalHuggingPriority="750" id="RaC-PH-kKy">

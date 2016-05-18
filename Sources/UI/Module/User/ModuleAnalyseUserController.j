@@ -453,9 +453,7 @@ var C_COLUMN_UID                = "uid",
         filteredArray = allUsers;
 
     if (self.bindedPredicateEditorValue != nil)
-    {
         filteredArray = [allUsers filteredArrayUsingPredicate:self.bindedPredicateEditorValue];
-    }
 
     _users = filteredArray;
 
@@ -663,9 +661,7 @@ var C_COLUMN_UID                = "uid",
             [allUsers removeObject:user];
         }
 
-        //[self _refreshTableFromPredicate];
-        [self refresh];
-
+        [self _refreshTableFromPredicate];
 
         var text = [CPString stringWithFormat:@"%@\nvetup_user supprimés correctement: %@", [_analyseTF stringValue], message];
         [_analyseTF setStringValue:text];
