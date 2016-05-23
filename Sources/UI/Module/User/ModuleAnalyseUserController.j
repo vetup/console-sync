@@ -78,15 +78,19 @@ var C_COLUMN_UID                = "uid",
     frame.size.width -= 20; //place pour la scrollbar
     var scrollView = [[CPScrollView alloc] initWithFrame:frame];
     [scrollView setAutoresizingMask:CPViewWidthSizable | CPViewHeightSizable];
- //   [scrollView setBackgroundColor:[CPColor redColor]];
+
     [scrollView setHasHorizontalScroller:true];
     [scrollView setHasVerticalScroller:true];
+
+//    [scrollView setBackgroundColor:[CPColor redColor]];
 
     //2- transférer les subview du container vers une nouvelle vue, en calculant la taille du nouveau container
 //     var documentSubView = [[CPView alloc] initWithFrame:CGRectMake(0,0,5000,600)],
      var documentSubView = [[CPView alloc] initWithFrame:[_container frame]],
-//     var documentSubView = [CPView new],
          containerSubviews = [_container subviews];
+
+    [documentSubView setAutoresizingMask:CPViewHeightSizable];
+//    [documentSubView setBackgroundColor:[CPColor greenColor]];
 
     var height = 0,
         width = 0;
@@ -105,25 +109,16 @@ var C_COLUMN_UID                = "uid",
         [documentSubView addSubview:subView];
     }
 
-    [documentSubView setFrame:CGRectMake(0 ,0, width + 40, 600)];
+//    [documentSubView setFrame:CGRectMake(0 ,0, width + 40, frame.size.height)];
+    [documentSubView setFrame:CGRectMake(0 ,0, width + 40, [scrollView frame].size.height)];
 
     //3 - Ajouter la scrollview au container
     [_container addSubview:scrollView];
 
     //4 - positionner le documentView
     [scrollView setDocumentView:documentSubView];
-/*
-    var superview = [_container superview];
-    [scrollView setBackgroundColor:[CPColor redColor]];
-    [superview addSubView:scrollView];
-    */
 
-//    [_container setHasHorizontalScroller:true];
-//    [_container setHasHorizontalScroller:false];
 
-//[_scrollview setDocumentView:_tableview];
-
-//    CPLog.debug(@"CONTAINER ModuleAnalyseUserController: %@", _container);
 
     //Delegate / data source pour le drag & drop
     [_userTable setDataSource:self];
